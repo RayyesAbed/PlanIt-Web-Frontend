@@ -12,7 +12,7 @@ const RandomLoginModel = () => {
 
   const { scene } = useGLTF(modelPath) as { scene: Group };
 
-  return <primitive object={scene} position={[0, -10, 0]} />;
+  return <primitive object={scene} />;
 };
 
 useGLTF.preload("/models/login/Tree1.glb");
