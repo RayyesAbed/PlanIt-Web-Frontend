@@ -15,6 +15,4 @@ const RandomLoginModel = () => {
   return <primitive object={scene} />;
 };
 
-useGLTF.preload("/models/login/Tree1.glb");
-
 export default RandomLoginModel;
