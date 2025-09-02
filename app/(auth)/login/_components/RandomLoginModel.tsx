@@ -2,7 +2,11 @@ import { useGLTF } from "@react-three/drei";
 import { useMemo } from "react";
 import { Group } from "three";
 
-const modelPaths = ["/models/login/Tree1.glb"];
+const modelPaths = [
+  "/models/login/Tree1.glb",
+  "/models/login/Tree2.glb",
+  "/models/login/Tree3.glb",
+];
 
 const RandomLoginModel = () => {
   const modelPath = useMemo(() => {
