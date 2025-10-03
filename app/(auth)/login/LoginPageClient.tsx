@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import loginUser from "./actions/loginUser";
 import ThemeToggle from "@/components/ThemeToggle";
 import useMediaQuery from "@/app/_hooks/useMediaQuery";
-import GoogleButton from "./_components/GoogleButton";
+import GoogleButton from "../../_components/GoogleButton";
 import AppleButton from "./_components/AppleButton";
 
 const LoginPage = () => {
@@ -28,7 +28,10 @@ const LoginPage = () => {
         </h1>
         <section className="flex flex-col md:flex-row gap-5">
           {/* Sign in with Google or Apple */}
-          <GoogleButton />
+          <GoogleButton
+            buttonAlt="Sign in with Google Icon"
+            ariaLabel="Sign in with Google"
+          />
           <AppleButton />
         </section>
         <section className="flex justify-center items-center my-5 w-full">
