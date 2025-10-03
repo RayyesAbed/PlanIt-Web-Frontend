@@ -1,0 +1,10 @@
+{
+  "continueText": "أو تابع مع",
+  "existingUserLoginText": "هل لديك حساب بالفعل؟ إذن قم بتسجيل الدخول",
+  "registerButtonText": "تسجيل",
+  "registerHeader": "هل أنت مستعد لبدء رحلتك؟",
+  "userBirthDate": "تاريخ الميلاد",
+  "userEmail": "البريد الإلكتروني",
+  "userName": "اسم",
+  "userPassword": "كلمة المرور"
+}
