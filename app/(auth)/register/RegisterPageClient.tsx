@@ -6,7 +6,7 @@ import RandomRegisterModel from "./_components/RandomRegisterModel";
 import ThemeToggle from "@/components/ThemeToggle";
 import Logo from "@/app/_components/Logo";
 import GoogleButton from "../../_components/GoogleButton";
-import AppleButton from "./_components/AppleButton";
+import AppleButton from "../../_components/AppleButton";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { BirthDatePicker } from "./_components/inputs/BirthDatePicker";
@@ -51,7 +51,10 @@ const RegisterPageClient = () => {
             buttonAlt="Register with Google Icon"
             ariaLabel="Register with Google"
           />
-          <AppleButton />
+          <AppleButton
+            buttonAlt="Register with Apple Icon"
+            ariaLabel="Register with Apple"
+          />
         </section>
         <section className="flex justify-center items-center my-5 w-full">
           {/* The continue with bar */}
