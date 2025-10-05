@@ -15,6 +15,7 @@ import registerUser from "./actions/registerUser";
 import NameInput from "./_components/inputs/NameInput";
 import EmailInput from "@/components/sharedFormInputs/EmailInput";
 import PasswordInput from "./_components/inputs/PasswordInput";
+import { useTranslation } from "react-i18next";
 
 const RegisterPageClient = () => {
   const [state, formAction, isRegisterPending] = useActionState(
@@ -22,6 +23,8 @@ const RegisterPageClient = () => {
     null
   );
   const isDesktop = useMediaQuery("(min-width: 1280px)");
+
+  const { t } = useTranslation("Register"); // load properties from 'Register' namespace
 
   return (
     <main className="flex items-center h-screen gap-5 mx-5">
@@ -43,7 +46,7 @@ const RegisterPageClient = () => {
         <ThemeToggle />
         <Logo />
         <h1 className="font-bold text-xl my-5 text-center">
-          Ready to start with your hero&apos;s journey?
+          {t("registerHeader")}
         </h1>
         <section className="flex flex-col md:flex-row gap-5">
           {/* Register in with Google or Apple */}
@@ -59,7 +62,7 @@ const RegisterPageClient = () => {
         <section className="flex justify-center items-center my-5 w-full">
           {/* The continue with bar */}
           <div className="md:w-40 h-0.25 bg-gray-300"></div>
-          <span className="mx-2 text-center">Or continue with</span>
+          <span className="mx-2 text-center">{t("continueText")}</span>
           <div className="md:w-40 h-0.25 bg-gray-300"></div>
         </section>
         <section className="flex-col items-center">
@@ -67,15 +70,15 @@ const RegisterPageClient = () => {
             action={formAction}
             className="flex flex-col items-center gap-3"
           >
-            <NameInput />
-            <EmailInput />
-            <BirthDatePicker />
-            <PasswordInput />
+            <NameInput placeholder={t("userName")} />
+            <EmailInput placeholder={t("userEmail")} />
+            <BirthDatePicker placeholder={t("userBirthDate")} />
+            <PasswordInput placeholder={t("userPassword")} />
             <Button className="w-[150px] font-bold cursor-pointer">
-              {isRegisterPending ? "Registering..." : "Register"}
+              {isRegisterPending ? "Registering..." : t("registerButtonText")}
             </Button>
             <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
-              <Link href="/login">Already have an account? Then login</Link>
+              <Link href="/login">{t("existingUserLoginText")}</Link>
             </section>
           </form>
           {!isRegisterPending && state?.error && (
