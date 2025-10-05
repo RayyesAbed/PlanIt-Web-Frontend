@@ -5,8 +5,8 @@ import useMediaQuery from "@/app/_hooks/useMediaQuery";
 import RandomRegisterModel from "./_components/RandomRegisterModel";
 import ThemeToggle from "@/components/ThemeToggle";
 import Logo from "@/app/_components/Logo";
-import GoogleButton from "./_components/GoogleButton";
-import AppleButton from "./_components/AppleButton";
+import GoogleButton from "../../_components/GoogleButton";
+import AppleButton from "../../_components/AppleButton";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { BirthDatePicker } from "./_components/inputs/BirthDatePicker";
@@ -47,8 +47,14 @@ const RegisterPageClient = () => {
         </h1>
         <section className="flex flex-col md:flex-row gap-5">
           {/* Register in with Google or Apple */}
-          <GoogleButton />
-          <AppleButton />
+          <GoogleButton
+            buttonAlt="Register with Google Icon"
+            ariaLabel="Register with Google"
+          />
+          <AppleButton
+            buttonAlt="Register with Apple Icon"
+            ariaLabel="Register with Apple"
+          />
         </section>
         <section className="flex justify-center items-center my-5 w-full">
           {/* The continue with bar */}

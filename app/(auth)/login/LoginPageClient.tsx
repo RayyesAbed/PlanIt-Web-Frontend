@@ -10,8 +10,8 @@ import { Input } from "@/components/ui/input";
 import loginUser from "./actions/loginUser";
 import ThemeToggle from "@/components/ThemeToggle";
 import useMediaQuery from "@/app/_hooks/useMediaQuery";
-import GoogleButton from "./_components/GoogleButton";
-import AppleButton from "./_components/AppleButton";
+import GoogleButton from "../../_components/GoogleButton";
+import AppleButton from "../../_components/AppleButton";
 
 const LoginPage = () => {
   const [state, formAction, isLoginPending] = useActionState(loginUser, null);
@@ -28,8 +28,14 @@ const LoginPage = () => {
         </h1>
         <section className="flex flex-col md:flex-row gap-5">
           {/* Sign in with Google or Apple */}
-          <GoogleButton />
-          <AppleButton />
+          <GoogleButton
+            buttonAlt="Sign in with Google Icon"
+            ariaLabel="Sign in with Google"
+          />
+          <AppleButton
+            buttonAlt="Sign in with Apple Icon"
+            ariaLabel="Sign in with Apple"
+          />
         </section>
         <section className="flex justify-center items-center my-5 w-full">
           {/* The continue with bar */}
