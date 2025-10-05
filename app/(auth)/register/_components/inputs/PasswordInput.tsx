@@ -5,14 +5,14 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const PasswordInput = () => {
+const PasswordInput = ({ placeholder }: { placeholder: string }) => {
   return (
     <Popover>
       <PopoverTrigger>
         <Input
           name="password"
           type="password"
-          placeholder="Password"
+          placeholder={placeholder}
           className="w-[300px] font-semibold"
           required={true}
         />
