@@ -6,6 +6,7 @@ import { headers } from "next/headers";
 import TranslationsProvider from "./_providers/translation/TranslationsProvider";
 import initTranslations from "./i18n";
 import i18nNamespaces from "@/i18nNamespaces";
+import detectDeviceLocale from "@/lib/detectDeviceLocale";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,7 @@ export default async function RootLayout({
 }>) {
   const headersList = await headers();
   const acceptLanguage = headersList.get("accept-language");
-  const locale = acceptLanguage?.split(",")[0].split("-")[0] || "en"; // Split user's device language or default it to English
+  const locale = detectDeviceLocale(acceptLanguage);
 
   const { resources } = await initTranslations(locale, i18nNamespaces);
 
