@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import useVerifyEmail from "./_hooks/useVerifyEmail";
+import { useTranslation } from "react-i18next";
 
 const Page = () => {
   const searchParams = useSearchParams();
@@ -11,27 +12,29 @@ const Page = () => {
 
   const emailVerificationStatus = useVerifyEmail(token);
 
+  const { t } = useTranslation("EmailVerify");
+
   return (
     <main className="w-full h-dvh flex flex-col items-center justify-center gap-7">
       <Logo />
-      <h1 className="font-bold text-2xl">User Email Verification</h1>
+      <h1 className="font-bold text-2xl">{t("VerificationHeading")}</h1>
       <p>
         {emailVerificationStatus == "success"
-          ? "Email verified successfully"
+          ? t("successfulEmailVerification")
           : emailVerificationStatus == "loading"
-          ? "Email verification in progress"
-          : "Email verification failed"}
+          ? t("inProgressEmailVerification")
+          : t("failedEmailVerification")}
       </p>
 
       {emailVerificationStatus == "success" && (
         <Link href="/login">
-          <Button>Go to Login</Button>
+          <Button>{t("goToLoginButton")}</Button>
         </Link>
       )}
 
       {emailVerificationStatus == "error" && (
         <Link href="/register">
-          <Button>Return to Register</Button>
+          <Button>{t("returnToRegisterButton")}</Button>
         </Link>
       )}
     </main>
