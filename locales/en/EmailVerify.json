@@ -1,0 +1,8 @@
+{
+  "failedEmailVerification": "Email verification failed",
+  "goToLoginButton": "Go to Login",
+  "inProgressEmailVerification": "Email verification in progress",
+  "returnToRegisterButton": "Return to Register",
+  "successfulEmailVerification": "Email verified successfully",
+  "VerificationHeading": "User Email Verification"
+}
