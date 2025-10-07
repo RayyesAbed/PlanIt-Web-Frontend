@@ -1,0 +1,8 @@
+{
+  "failedEmailVerification": "فشل التحقق من البريد الإلكتروني",
+  "goToLoginButton": "اذهب إلى تسجيل الدخول",
+  "inProgressEmailVerification": "جارٍ التحقق من البريد الإلكتروني",
+  "returnToRegisterButton": "العودة إلى التسجيل",
+  "successfulEmailVerification": "تم التحقق من البريد الإلكتروني بنجاح",
+  "VerificationHeading": "تحقق من بريد المستخدم الإلكتروني"
+}

@@ -1,0 +1,8 @@
+{
+  "failedEmailVerification": "E-Mail-Überprüfung fehlgeschlagen",
+  "goToLoginButton": "Gehe zu Login",
+  "inProgressEmailVerification": "E-Mail-Verifizierung läuft",
+  "returnToRegisterButton": "Zurück zur Registrierung",
+  "successfulEmailVerification": "E-Mail erfolgreich verifiziert",
+  "VerificationHeading": "Benutzermailverifizierung"
+}

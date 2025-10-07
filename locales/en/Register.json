@@ -3,6 +3,7 @@
   "existingUserLoginText": "Already have an account? Then login",
   "registerButtonText": "Register",
   "registerHeader": "Ready to start with your journey?",
+  "successfulRegistrationText": "A verification email has been sent, please check your mailbox",
   "userBirthDate": "Birth date",
   "userEmail": "Email",
   "userName": "Name",

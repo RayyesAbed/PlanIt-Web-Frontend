@@ -11,7 +11,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function BirthDatePicker() {
+export function BirthDatePicker({ placeholder }: { placeholder: string }) {
   const [open, setOpen] = React.useState(false);
   const [date, setDate] = React.useState<Date>();
 
@@ -24,7 +24,7 @@ export function BirthDatePicker() {
             id="date"
             className="w-[300px] justify-between font-normal"
           >
-            {date ? date.toLocaleDateString() : "Birth date"}
+            {date ? date.toLocaleDateString() : placeholder}
             <ChevronDownIcon />
           </Button>
         </PopoverTrigger>

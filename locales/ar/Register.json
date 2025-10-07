@@ -3,6 +3,7 @@
   "existingUserLoginText": "هل لديك حساب بالفعل؟ إذن قم بتسجيل الدخول",
   "registerButtonText": "تسجيل",
   "registerHeader": "هل أنت مستعد لبدء رحلتك؟",
+  "successfulRegistrationText": "تم إرسال بريد التحقق، يرجى التحقق من صندوق بريدك",
   "userBirthDate": "تاريخ الميلاد",
   "userEmail": "البريد الإلكتروني",
   "userName": "اسم",
