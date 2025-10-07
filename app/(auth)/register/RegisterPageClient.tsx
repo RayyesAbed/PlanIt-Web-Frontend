@@ -15,6 +15,7 @@ import registerUser from "./actions/registerUser";
 import NameInput from "./_components/inputs/NameInput";
 import EmailInput from "@/components/sharedFormInputs/EmailInput";
 import PasswordInput from "./_components/inputs/PasswordInput";
+import LanguageSelector from "@/components/LanguageSelector";
 
 const RegisterPageClient = () => {
   const [state, formAction, isRegisterPending] = useActionState(
@@ -70,6 +71,7 @@ const RegisterPageClient = () => {
             <NameInput />
             <EmailInput />
             <BirthDatePicker />
+            <LanguageSelector />
             <PasswordInput />
             <Button className="w-[150px] font-bold cursor-pointer">
               {isRegisterPending ? "Registering..." : "Register"}
