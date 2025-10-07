@@ -6,6 +6,7 @@ const registerUser = async (prevData: unknown, formData: FormData) => {
       name: formData.get("name") as string,
       toBeConfirmedEmail: formData.get("email") as string,
       birthDate: (formData.get("birthDate") as string) ?? null,
+      language: formData.get("language") as string,
       password: formData.get("password") as string,
     };
 
