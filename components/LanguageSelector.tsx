@@ -5,18 +5,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useTranslation } from "react-i18next";
 
 const LanguageSelector = () => {
+  const { t } = useTranslation("LanguageSelector");
+
   return (
     <div className="w-[300px]">
       <Select name="language">
         <SelectTrigger className="w-full">
-          <SelectValue placeholder="Your language" />
+          <SelectValue placeholder={t("yourLanguage")} />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="english">🇬🇧 English</SelectItem>
-          <SelectItem value="german">🇩🇪 German</SelectItem>
-          <SelectItem value="arabic">🇸🇦 Arabic</SelectItem>
+          <SelectItem value="en">🇬🇧 {t("english")}</SelectItem>
+          <SelectItem value="de">🇩🇪 {t("german")}</SelectItem>
+          <SelectItem value="ar">🇸🇦 {t("arabic")}</SelectItem>
         </SelectContent>
       </Select>
     </div>
