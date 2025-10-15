@@ -4,8 +4,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useTranslation } from "react-i18next";
 
 const PasswordInput = ({ placeholder }: { placeholder: string }) => {
+  const { t } = useTranslation("Register");
+
   return (
     <Popover>
       <PopoverTrigger>
@@ -18,13 +21,12 @@ const PasswordInput = ({ placeholder }: { placeholder: string }) => {
         />
       </PopoverTrigger>
       <PopoverContent className="w[300px]" align="center">
-        Your password should at least include 8 characters and at least the
-        following:
+        {t("passwordPolicy.text")}
         <ol className="list-decimal list-inside">
-          <li>A number</li>
-          <li>A lowercase letter</li>
-          <li>An uppercase letter</li>
-          <li>A special letter</li>
+          <li>{t("passwordPolicy.number")}</li>
+          <li>{t("passwordPolicy.lowercaseLetter")}</li>
+          <li>{t("passwordPolicy.uppercaseLetter")}</li>
+          <li>{t("passwordPolicy.specialCharacter")}</li>
         </ol>
       </PopoverContent>
     </Popover>
