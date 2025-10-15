@@ -7,5 +7,12 @@
   "userBirthDate": "تاريخ الميلاد",
   "userEmail": "البريد الإلكتروني",
   "userName": "اسم",
-  "userPassword": "كلمة المرور"
+  "userPassword": "كلمة المرور",
+  "passwordPolicy": {
+    "text": "يجب أن تحتوي كلمة المرور الخاصة بك على 8 أحرف على الأقل وتشمل ما يلي:",
+    "number": "رقم",
+    "lowercaseLetter": "حرفًا صغيرًا",
+    "uppercaseLetter": "حرفًا كبيرًا",
+    "specialCharacter": "رمزًا خاصًا"
+  }
 }
