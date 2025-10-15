@@ -7,5 +7,12 @@
   "userBirthDate": "Geburtsdatum",
   "userEmail": "E-Mail",
   "userName": "Name",
-  "userPassword": "Passwort"
+  "userPassword": "Passwort",
+  "passwordPolicy": {
+    "text": "Dein Passwort sollte mindestens 8 Zeichen lang sein und Folgendes enthalten:",
+    "number": "Eine Zahl",
+    "lowercaseLetter": "Einen Kleinbuchstaben",
+    "uppercaseLetter": "Einen Großbuchstaben",
+    "specialCharacter": "Ein Sonderzeichen"
+  }
 }
