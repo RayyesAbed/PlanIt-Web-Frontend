@@ -1,6 +1,10 @@
+"use server";
 import RegisterCredentials from "../_types/RegisterCredentials";
+import translateFormStatus from "@/lib/translateFormStatus";
 
 const registerUser = async (prevData: unknown, formData: FormData) => {
+  const t = await translateFormStatus();
+
   try {
     const credentials: RegisterCredentials = {
       name: formData.get("name") as string,
@@ -24,23 +28,22 @@ const registerUser = async (prevData: unknown, formData: FormData) => {
     if (!response.ok) {
       if (response.status == 400) {
         return {
-          error: "One of the fields is empty or invalid, please check them",
+          error: t("emptyFieldsError"),
         };
       } else if (response.status == 429) {
         return {
-          error: "You tried to register too many times! Try again later",
+          error: t("429Error"),
         };
       }
     }
 
     return {
-      success: "A verification email has been sent, please check your mailbox",
+      success: t("verificationEmail"),
     };
   } catch (error) {
     console.error("Register error:", error);
     return {
-      error:
-        "Unable to reach the server. Please check your internet connection.",
+      error: t("500Error"),
     };
   }
 };

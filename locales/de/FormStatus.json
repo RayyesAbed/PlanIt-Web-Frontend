@@ -1,0 +1,8 @@
+{
+  "emptyFieldsError": "Eines der Felder ist leer oder ungültig. Bitte überprüfe deine Eingaben.",
+  "500Error": "Der Server konnte nicht erreicht werden. Bitte überprüfe deine Internetverbindung.",
+  "400Error": "Ungültige Anmeldedaten! Bitte überprüfe deine Eingabefelder.",
+  "401Error": "E-Mail, Passwort oder beides sind falsch!",
+  "429Error": "Du hast versucht, dich zu oft zu registrieren! Versuch es später noch einmal.",
+  "verificationEmail": "Eine Bestätigungs-E-Mail wurde gesendet. Bitte überprüfe dein Postfach."
+}
