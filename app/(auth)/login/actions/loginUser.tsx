@@ -1,6 +1,10 @@
+"use server";
+import translateFormStatus from "@/lib/translateFormStatus";
 import LoginCredentials from "../_types/LoginCredentials";
 
 const loginUser = async (prevState: unknown, formData: FormData) => {
+  const t = await translateFormStatus();
+
   try {
     const credentials: LoginCredentials = {
       email: formData.get("email") as string,
@@ -22,20 +26,20 @@ const loginUser = async (prevState: unknown, formData: FormData) => {
     if (!response.ok) {
       switch (response.status) {
         case 400:
-          return "Invalid credentials! Please check your input fields";
+          return t("400Error");
         case 401:
-          return "Incorrect email, password, or both!";
+          return t("401Error");
         case 429:
-          return "You tried to log in many times! Try again later";
+          return t("429Error");
         default:
           if (response.status >= 500) {
-            return "Server error. Please try again later.";
+            return t("500Error");
           }
       }
     }
   } catch (error) {
     console.error("Login error:", error);
-    return "Unable to reach the server. Please check your internet connection.";
+    return t("500Error");
   }
 };
 
