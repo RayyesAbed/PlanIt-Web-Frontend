@@ -1,0 +1,8 @@
+{
+  "emptyFieldsError": "One of the fields is empty or invalid, please check them",
+  "500Error": "Unable to reach the server. Please check your internet connection.",
+  "400Error": "Invalid credentials! Please check your input fields",
+  "401Error": "Incorrect email, password, or both!",
+  "429Error": "You tried to register too many times! Try again later",
+  "verificationEmail": "A verification email has been sent, please check your mailbox"
+}
