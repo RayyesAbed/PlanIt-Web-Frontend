@@ -10,7 +10,6 @@ import AppleButton from "../../_components/AppleButton";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { BirthDatePicker } from "./_components/inputs/BirthDatePicker";
-import { useActionState } from "react";
 import registerUser from "./actions/registerUser";
 import NameInput from "./_components/inputs/NameInput";
 import EmailInput from "@/components/sharedFormInputs/EmailInput";
@@ -19,10 +18,6 @@ import { useTranslation } from "react-i18next";
 import LanguageSelector from "@/components/LanguageSelector";
 
 const RegisterPageClient = () => {
-  const [state, formAction, isRegisterPending] = useActionState(
-    registerUser,
-    null
-  );
   const isDesktop = useMediaQuery("(min-width: 1280px)");
 
   const { t } = useTranslation("Register"); // load properties from 'Register' namespace
@@ -67,23 +62,20 @@ const RegisterPageClient = () => {
           <div className="md:w-40 h-0.25 bg-gray-300"></div>
         </section>
         <section className="flex-col items-center">
-          <form
-            action={formAction}
-            className="flex flex-col items-center gap-3"
-          >
+          <form className="flex flex-col items-center gap-3">
             <NameInput placeholder={t("userName")} />
             <EmailInput placeholder={t("userEmail")} />
             <BirthDatePicker placeholder={t("userBirthDate")} />
             <PasswordInput placeholder={t("userPassword")} />
             <LanguageSelector />
             <Button className="w-[150px] font-bold cursor-pointer">
-              {isRegisterPending ? "Registering..." : t("registerButtonText")}
+              {/* {isRegisterPending ? "Registering..." : t("registerButtonText")} */}
             </Button>
             <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
               <Link href="/login">{t("existingUserLoginText")}</Link>
             </section>
           </form>
-          {!isRegisterPending && state?.error && (
+          {/* {!isRegisterPending && state?.error && (
             <p className="text-white p-2 mt-5 rounded-4xl text-center bg-red-900 ">
               {state.error}
             </p>
@@ -92,7 +84,7 @@ const RegisterPageClient = () => {
             <p className="text-white p-2 mt-5 rounded-4xl text-center bg-green-900 ">
               {state.success}
             </p>
-          )}
+          )} */}
         </section>
       </section>
     </main>
