@@ -83,7 +83,16 @@ const RegisterPageClient = () => {
               }
               placeholder={t("userName")}
             />
-            <EmailInput placeholder={t("userEmail")} />
+            <EmailInput
+              value={registerCredentials?.toBeConfirmedEmail ?? ""}
+              onChange={(event) =>
+                setRegisterCredentials({
+                  ...registerCredentials,
+                  toBeConfirmedEmail: event.target.value,
+                })
+              }
+              placeholder={t("userEmail")}
+            />
             <BirthDatePicker placeholder={t("userBirthDate")} />
             <PasswordInput placeholder={t("userPassword")} />
             <LanguageSelector />
