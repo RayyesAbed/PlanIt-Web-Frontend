@@ -16,9 +16,19 @@ import EmailInput from "@/components/sharedFormInputs/EmailInput";
 import PasswordInput from "./_components/inputs/PasswordInput";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "@/components/LanguageSelector";
+import { useState } from "react";
+import RegisterCredentials from "./_types/RegisterCredentials";
 
 const RegisterPageClient = () => {
   const isDesktop = useMediaQuery("(min-width: 1280px)");
+  const [registerCredentials, setRegisterCredentials] =
+    useState<RegisterCredentials>({
+      name: "",
+      toBeConfirmedEmail: "",
+      birthDate: "",
+      language: "",
+      password: "",
+    });
 
   const { t } = useTranslation("Register"); // load properties from 'Register' namespace
 
@@ -63,7 +73,16 @@ const RegisterPageClient = () => {
         </section>
         <section className="flex-col items-center">
           <form className="flex flex-col items-center gap-3">
-            <NameInput placeholder={t("userName")} />
+            <NameInput
+              value={registerCredentials?.name ?? ""}
+              onChange={(event) =>
+                setRegisterCredentials({
+                  ...registerCredentials,
+                  name: event.target.value,
+                })
+              }
+              placeholder={t("userName")}
+            />
             <EmailInput placeholder={t("userEmail")} />
             <BirthDatePicker placeholder={t("userBirthDate")} />
             <PasswordInput placeholder={t("userPassword")} />
