@@ -30,6 +30,10 @@ const RegisterPageClient = () => {
       password: "",
     });
 
+  const [isPending, setPending] = useState(false);
+  const [isSuccess, setSuccess] = useState(false);
+  const [isError, setError] = useState(false);
+
   const { t } = useTranslation("Register"); // load properties from 'Register' namespace
 
   const updateRegisterCredentials = (
