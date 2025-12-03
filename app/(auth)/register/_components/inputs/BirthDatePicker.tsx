@@ -11,9 +11,24 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function BirthDatePicker({ placeholder }: { placeholder: string }) {
+export function BirthDatePicker({
+  placeholder,
+  value,
+  onChange,
+}: {
+  placeholder: string;
+  value: string;
+  onChange: (value: string) => void;
+}) {
   const [open, setOpen] = React.useState(false);
   const [date, setDate] = React.useState<Date>();
+
+  React.useEffect(() => {
+    if (!value) {
+      setDate(undefined);
+      return;
+    }
+  }, [value]);
 
   return (
     <div className="">
@@ -35,17 +50,19 @@ export function BirthDatePicker({ placeholder }: { placeholder: string }) {
             captionLayout="dropdown"
             onSelect={(date) => {
               setDate(date);
+
+              if (date) {
+                onChange(date.toLocaleDateString());
+              } else {
+                onChange("");
+              }
+
               setOpen(false);
             }}
             disabled={(date) => date > new Date()}
           />
         </PopoverContent>
       </Popover>
-      <input
-        type="hidden"
-        defaultValue={date?.toLocaleDateString()}
-        name="birthDate"
-      />
     </div>
   );
 }
