@@ -93,7 +93,16 @@ const RegisterPageClient = () => {
               }
               placeholder={t("userEmail")}
             />
-            <BirthDatePicker placeholder={t("userBirthDate")} />
+            <BirthDatePicker
+              value={registerCredentials?.birthDate ?? ""}
+              onChange={(birthDate) =>
+                setRegisterCredentials({
+                  ...registerCredentials,
+                  birthDate: birthDate,
+                })
+              }
+              placeholder={t("userBirthDate")}
+            />
             <PasswordInput placeholder={t("userPassword")} />
             <LanguageSelector />
             <Button className="w-[150px] font-bold cursor-pointer">
