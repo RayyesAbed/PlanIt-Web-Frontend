@@ -33,6 +33,7 @@ const RegisterPageClient = () => {
   const [isPending, setPending] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
   const [isError, setError] = useState(false);
+  const [responseData, setResponseData] = useState("");
 
   const { t } = useTranslation("Register"); // load properties from 'Register' namespace
 
@@ -44,6 +45,31 @@ const RegisterPageClient = () => {
       ...prev,
       [field]: value,
     }));
+  };
+
+  const handleRegisterSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setPending(true);
+
+    let response: string = "";
+
+    try {
+      response = await registerUser(registerCredentials);
+      setResponseData(response);
+      setSuccess(true);
+      setRegisterCredentials({
+        name: "",
+        toBeConfirmedEmail: "",
+        birthDate: "",
+        language: "",
+        password: "",
+      });
+    } catch (error) {
+      setResponseData(error instanceof Error ? error.message : String(error));
+      setError(true);
+    } finally {
+      setPending(false);
+    }
   };
 
   return (
@@ -86,7 +112,10 @@ const RegisterPageClient = () => {
           <div className="md:w-40 h-0.25 bg-gray-300"></div>
         </section>
         <section className="flex-col items-center">
-          <form className="flex flex-col items-center gap-3">
+          <form
+            onSubmit={handleRegisterSubmit}
+            className="flex flex-col items-center gap-3"
+          >
             <NameInput
               value={registerCredentials?.name ?? ""}
               onChange={(event) =>
@@ -125,22 +154,22 @@ const RegisterPageClient = () => {
               }
             />
             <Button className="w-[150px] font-bold cursor-pointer">
-              {/* {isRegisterPending ? "Registering..." : t("registerButtonText")} */}
+              {isPending ? "Registering..." : t("registerButtonText")}
             </Button>
             <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
               <Link href="/login">{t("existingUserLoginText")}</Link>
             </section>
           </form>
-          {/* {!isRegisterPending && state?.error && (
-            <p className="text-white p-2 mt-5 rounded-4xl text-center bg-red-900 ">
-              {state.error}
+          {isSuccess && (
+            <p className="text-white p-2 mt-5 rounded-4xl text-center bg-green-900 ">
+              {responseData}
             </p>
           )}
-          {!isRegisterPending && state?.success && (
-            <p className="text-white p-2 mt-5 rounded-4xl text-center bg-green-900 ">
-              {state.success}
+          {isError && (
+            <p className="text-white p-2 mt-5 rounded-4xl text-center bg-red-900">
+              {responseData}
             </p>
-          )} */}
+          )}
         </section>
       </section>
     </main>
