@@ -32,6 +32,16 @@ const RegisterPageClient = () => {
 
   const { t } = useTranslation("Register"); // load properties from 'Register' namespace
 
+  const updateRegisterCredentials = (
+    field: keyof RegisterCredentials,
+    value: string
+  ) => {
+    setRegisterCredentials((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
   return (
     <main className="flex items-center h-screen gap-5 mx-5">
       {isDesktop && (
@@ -76,50 +86,38 @@ const RegisterPageClient = () => {
             <NameInput
               value={registerCredentials?.name ?? ""}
               onChange={(event) =>
-                setRegisterCredentials({
-                  ...registerCredentials,
-                  name: event.target.value,
-                })
+                updateRegisterCredentials("name", event.target.value)
               }
               placeholder={t("userName")}
             />
             <EmailInput
               value={registerCredentials?.toBeConfirmedEmail ?? ""}
               onChange={(event) =>
-                setRegisterCredentials({
-                  ...registerCredentials,
-                  toBeConfirmedEmail: event.target.value,
-                })
+                updateRegisterCredentials(
+                  "toBeConfirmedEmail",
+                  event.target.value
+                )
               }
               placeholder={t("userEmail")}
             />
             <BirthDatePicker
               value={registerCredentials?.birthDate ?? ""}
               onChange={(birthDate) =>
-                setRegisterCredentials({
-                  ...registerCredentials,
-                  birthDate: birthDate,
-                })
+                updateRegisterCredentials("birthDate", birthDate)
               }
               placeholder={t("userBirthDate")}
             />
             <PasswordInput
               value={registerCredentials.password}
               onChange={(event) =>
-                setRegisterCredentials({
-                  ...registerCredentials,
-                  password: event.target.value,
-                })
+                updateRegisterCredentials("password", event.target.value)
               }
               placeholder={t("userPassword")}
             />
             <LanguageSelector
               value={registerCredentials.language}
               onSelect={(language) =>
-                setRegisterCredentials({
-                  ...registerCredentials,
-                  language: language,
-                })
+                updateRegisterCredentials("language", language)
               }
             />
             <Button className="w-[150px] font-bold cursor-pointer">
