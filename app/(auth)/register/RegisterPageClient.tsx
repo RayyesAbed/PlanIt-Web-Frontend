@@ -103,7 +103,16 @@ const RegisterPageClient = () => {
               }
               placeholder={t("userBirthDate")}
             />
-            <PasswordInput placeholder={t("userPassword")} />
+            <PasswordInput
+              value={registerCredentials.password}
+              onChange={(event) =>
+                setRegisterCredentials({
+                  ...registerCredentials,
+                  password: event.target.value,
+                })
+              }
+              placeholder={t("userPassword")}
+            />
             <LanguageSelector />
             <Button className="w-[150px] font-bold cursor-pointer">
               {/* {isRegisterPending ? "Registering..." : t("registerButtonText")} */}
