@@ -113,7 +113,15 @@ const RegisterPageClient = () => {
               }
               placeholder={t("userPassword")}
             />
-            <LanguageSelector />
+            <LanguageSelector
+              value={registerCredentials.language}
+              onSelect={(language) =>
+                setRegisterCredentials({
+                  ...registerCredentials,
+                  language: language,
+                })
+              }
+            />
             <Button className="w-[150px] font-bold cursor-pointer">
               {/* {isRegisterPending ? "Registering..." : t("registerButtonText")} */}
             </Button>
