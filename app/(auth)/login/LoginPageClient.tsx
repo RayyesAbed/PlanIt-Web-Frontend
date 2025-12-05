@@ -1,5 +1,5 @@
 "use client";
-import { Suspense } from "react";
+import { ChangeEvent, Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Link from "next/link";
@@ -13,9 +13,22 @@ import useMediaQuery from "@/app/_hooks/useMediaQuery";
 import GoogleButton from "../../_components/GoogleButton";
 import AppleButton from "../../_components/AppleButton";
 import { useTranslation } from "react-i18next";
+import LoginCredentials from "./_types/LoginCredentials";
 
 const LoginPage = () => {
+  const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({
+    email: "",
+    password: "",
+  });
   const isDesktop = useMediaQuery("(min-width: 1280px)");
+
+  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setLoginCredentials({ ...loginCredentials, email: event.target.value });
+  };
+
+  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setLoginCredentials({ ...loginCredentials, password: event.target.value });
+  };
 
   const { t } = useTranslation("Login");
 
@@ -47,6 +60,8 @@ const LoginPage = () => {
             <Input
               name="email"
               type="email"
+              value={loginCredentials.email}
+              onChange={handleEmailChange}
               placeholder={t("userEmail")}
               className="w-[300px] font-semibold"
               required={true}
@@ -54,6 +69,8 @@ const LoginPage = () => {
             <Input
               name="password"
               type="password"
+              value={loginCredentials.password}
+              onChange={handlePasswordChange}
               placeholder={t("userPassword")}
               className="w-[300px] font-semibold"
               required={true}
