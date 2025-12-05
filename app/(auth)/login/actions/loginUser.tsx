@@ -2,20 +2,15 @@
 import translateFormStatus from "@/lib/translateFormStatus";
 import LoginCredentials from "../_types/LoginCredentials";
 
-const loginUser = async (prevState: unknown, formData: FormData) => {
+const loginUser = async (loginCredentials: LoginCredentials) => {
   const t = await translateFormStatus();
 
   try {
-    const credentials: LoginCredentials = {
-      email: formData.get("email") as string,
-      password: formData.get("password") as string,
-    };
-
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,
       {
         method: "POST",
-        body: JSON.stringify(credentials),
+        body: JSON.stringify(loginCredentials),
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
@@ -26,20 +21,18 @@ const loginUser = async (prevState: unknown, formData: FormData) => {
     if (!response.ok) {
       switch (response.status) {
         case 400:
-          return t("400Error");
+          throw new Error(t("400Error"));
         case 401:
-          return t("401Error");
+          throw new Error(t("401Error"));
         case 429:
-          return t("429Error");
-        default:
-          if (response.status >= 500) {
-            return t("500Error");
-          }
+          throw new Error(t("429Error"));
       }
     }
+
+    return "Successful login";
   } catch (error) {
     console.error("Login error:", error);
-    return t("500Error");
+    throw new Error(error instanceof Error ? error.message : String(error));
   }
 };
 
