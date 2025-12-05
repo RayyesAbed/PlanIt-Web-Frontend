@@ -6,7 +6,15 @@ import {
 } from "@/components/ui/popover";
 import { useTranslation } from "react-i18next";
 
-const PasswordInput = ({ placeholder }: { placeholder: string }) => {
+const PasswordInput = ({
+  placeholder,
+  value,
+  onChange,
+}: {
+  placeholder: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}) => {
   const { t } = useTranslation("Register");
 
   return (
@@ -15,6 +23,8 @@ const PasswordInput = ({ placeholder }: { placeholder: string }) => {
         <Input
           name="password"
           type="password"
+          value={value}
+          onChange={onChange}
           placeholder={placeholder}
           className="w-[300px] font-semibold"
           required={true}

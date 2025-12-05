@@ -10,22 +10,67 @@ import AppleButton from "../../_components/AppleButton";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { BirthDatePicker } from "./_components/inputs/BirthDatePicker";
-import { useActionState } from "react";
 import registerUser from "./actions/registerUser";
 import NameInput from "./_components/inputs/NameInput";
 import EmailInput from "@/components/sharedFormInputs/EmailInput";
 import PasswordInput from "./_components/inputs/PasswordInput";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "@/components/LanguageSelector";
+import { useState } from "react";
+import RegisterCredentials from "./_types/RegisterCredentials";
 
 const RegisterPageClient = () => {
-  const [state, formAction, isRegisterPending] = useActionState(
-    registerUser,
-    null
-  );
   const isDesktop = useMediaQuery("(min-width: 1280px)");
+  const [registerCredentials, setRegisterCredentials] =
+    useState<RegisterCredentials>({
+      name: "",
+      toBeConfirmedEmail: "",
+      birthDate: "",
+      language: "",
+      password: "",
+    });
+
+  const [isPending, setPending] = useState(false);
+  const [isSuccess, setSuccess] = useState(false);
+  const [isError, setError] = useState(false);
+  const [responseData, setResponseData] = useState("");
 
   const { t } = useTranslation("Register"); // load properties from 'Register' namespace
+
+  const updateRegisterCredentials = (
+    field: keyof RegisterCredentials,
+    value: string
+  ) => {
+    setRegisterCredentials((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const handleRegisterSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setPending(true);
+
+    let response: string = "";
+
+    try {
+      response = await registerUser(registerCredentials);
+      setResponseData(response);
+      setSuccess(true);
+      setRegisterCredentials({
+        name: "",
+        toBeConfirmedEmail: "",
+        birthDate: "",
+        language: "",
+        password: "",
+      });
+    } catch (error) {
+      setResponseData(error instanceof Error ? error.message : String(error));
+      setError(true);
+    } finally {
+      setPending(false);
+    }
+  };
 
   return (
     <main className="flex items-center h-screen gap-5 mx-5">
@@ -68,29 +113,61 @@ const RegisterPageClient = () => {
         </section>
         <section className="flex-col items-center">
           <form
-            action={formAction}
+            onSubmit={handleRegisterSubmit}
             className="flex flex-col items-center gap-3"
           >
-            <NameInput placeholder={t("userName")} />
-            <EmailInput placeholder={t("userEmail")} />
-            <BirthDatePicker placeholder={t("userBirthDate")} />
-            <PasswordInput placeholder={t("userPassword")} />
-            <LanguageSelector />
+            <NameInput
+              value={registerCredentials?.name ?? ""}
+              onChange={(event) =>
+                updateRegisterCredentials("name", event.target.value)
+              }
+              placeholder={t("userName")}
+            />
+            <EmailInput
+              value={registerCredentials?.toBeConfirmedEmail ?? ""}
+              onChange={(event) =>
+                updateRegisterCredentials(
+                  "toBeConfirmedEmail",
+                  event.target.value
+                )
+              }
+              placeholder={t("userEmail")}
+            />
+            <BirthDatePicker
+              value={registerCredentials?.birthDate ?? ""}
+              onChange={(birthDate) =>
+                updateRegisterCredentials("birthDate", birthDate)
+              }
+              placeholder={t("userBirthDate")}
+            />
+            <PasswordInput
+              value={registerCredentials.password}
+              onChange={(event) =>
+                updateRegisterCredentials("password", event.target.value)
+              }
+              placeholder={t("userPassword")}
+            />
+            <LanguageSelector
+              value={registerCredentials.language}
+              onSelect={(language) =>
+                updateRegisterCredentials("language", language)
+              }
+            />
             <Button className="w-[150px] font-bold cursor-pointer">
-              {isRegisterPending ? "Registering..." : t("registerButtonText")}
+              {isPending ? "Registering..." : t("registerButtonText")}
             </Button>
             <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
               <Link href="/login">{t("existingUserLoginText")}</Link>
             </section>
           </form>
-          {!isRegisterPending && state?.error && (
-            <p className="text-white p-2 mt-5 rounded-4xl text-center bg-red-900 ">
-              {state.error}
+          {isSuccess && (
+            <p className="text-white p-2 mt-5 rounded-4xl text-center bg-green-900 ">
+              {responseData}
             </p>
           )}
-          {!isRegisterPending && state?.success && (
-            <p className="text-white p-2 mt-5 rounded-4xl text-center bg-green-900 ">
-              {state.success}
+          {isError && (
+            <p className="text-white p-2 mt-5 rounded-4xl text-center bg-red-900">
+              {responseData}
             </p>
           )}
         </section>
