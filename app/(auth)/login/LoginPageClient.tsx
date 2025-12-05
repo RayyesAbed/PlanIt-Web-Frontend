@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useActionState } from "react";
+import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Link from "next/link";
@@ -15,8 +15,6 @@ import AppleButton from "../../_components/AppleButton";
 import { useTranslation } from "react-i18next";
 
 const LoginPage = () => {
-  const [state, formAction, isLoginPending] = useActionState(loginUser, null);
-
   const isDesktop = useMediaQuery("(min-width: 1280px)");
 
   const { t } = useTranslation("Login");
@@ -45,10 +43,7 @@ const LoginPage = () => {
           <div className="md:w-40 h-0.25 bg-gray-300"></div>
         </section>
         <section className="flex-col items-center">
-          <form
-            action={formAction}
-            className="flex flex-col items-center gap-3"
-          >
+          <form className="flex flex-col items-center gap-3">
             <Input
               name="email"
               type="email"
@@ -63,22 +58,19 @@ const LoginPage = () => {
               className="w-[300px] font-semibold"
               required={true}
             />
-            <Button
-              className="w-[150px] font-bold cursor-pointer"
-              disabled={isLoginPending}
-            >
-              {isLoginPending ? "Logging in..." : t("loginButtonText")}
+            <Button className="w-[150px] font-bold cursor-pointer">
+              {/* {isLoginPending ? "Logging in..." : t("loginButtonText")} */}
             </Button>
             <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
               <Link href="#">{t("forgotPasswordText")}</Link>
               <Link href="/register">{t("newUsersRegisterText")}</Link>
             </section>
           </form>
-          {!isLoginPending && state && (
+          {/* {!isLoginPending && state && (
             <p className="bg-red-900 text-white p-2 mt-5 rounded-4xl text-center">
               {state}
             </p>
-          )}
+          )} */}
         </section>
       </section>
       {isDesktop && (
