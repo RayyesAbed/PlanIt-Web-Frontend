@@ -20,6 +20,11 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+  const [isPending, setPending] = useState(false);
+  const [isError, setError] = useState(false);
+  const [isSuccess, setSuccess] = useState(false);
+  const [responseData, setResponseData] = useState("");
+
   const isDesktop = useMediaQuery("(min-width: 1280px)");
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -28,6 +33,24 @@ const LoginPage = () => {
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLoginCredentials({ ...loginCredentials, password: event.target.value });
+  };
+
+  const handleLoginSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setPending(true);
+
+    try {
+      const response = await loginUser(loginCredentials);
+      setSuccess(true);
+      setError(false);
+      setResponseData(response);
+    } catch (error) {
+      setResponseData(error instanceof Error ? error.message : String(error));
+      setError(true);
+      setSuccess(false);
+    } finally {
+      setPending(false);
+    }
   };
 
   const { t } = useTranslation("Login");
@@ -56,7 +79,10 @@ const LoginPage = () => {
           <div className="md:w-40 h-0.25 bg-gray-300"></div>
         </section>
         <section className="flex-col items-center">
-          <form className="flex flex-col items-center gap-3">
+          <form
+            onSubmit={handleLoginSubmit}
+            className="flex flex-col items-center gap-3"
+          >
             <Input
               name="email"
               type="email"
@@ -76,18 +102,23 @@ const LoginPage = () => {
               required={true}
             />
             <Button className="w-[150px] font-bold cursor-pointer">
-              {/* {isLoginPending ? "Logging in..." : t("loginButtonText")} */}
+              {isPending ? "Logging in..." : t("loginButtonText")}
             </Button>
             <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
               <Link href="#">{t("forgotPasswordText")}</Link>
               <Link href="/register">{t("newUsersRegisterText")}</Link>
             </section>
           </form>
-          {/* {!isLoginPending && state && (
+          {isError && (
             <p className="bg-red-900 text-white p-2 mt-5 rounded-4xl text-center">
-              {state}
+              {responseData}
             </p>
-          )} */}
+          )}
+          {isSuccess && (
+            <p className="bg-green-900 text-white p-2 mt-5 rounded-4xl text-center">
+              {responseData}
+            </p>
+          )}
         </section>
       </section>
       {isDesktop && (
