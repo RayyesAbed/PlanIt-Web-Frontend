@@ -7,7 +7,7 @@ import RandomLoginModel from "./_components/RandomLoginModel";
 import Logo from "@/app/_components/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import loginUser from "./actions/loginUser";
+import loginUser from "./lib/loginUser";
 import ThemeToggle from "@/components/ThemeToggle";
 import useMediaQuery from "@/app/_hooks/useMediaQuery";
 import GoogleButton from "../../_components/GoogleButton";
@@ -24,6 +24,8 @@ const LoginPage = () => {
   const [isError, setError] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
   const [responseData, setResponseData] = useState("");
+
+  const formStatusMessage = useTranslation("FormStatus");
 
   const isDesktop = useMediaQuery("(min-width: 1280px)");
 
@@ -43,9 +45,13 @@ const LoginPage = () => {
       const response = await loginUser(loginCredentials);
       setSuccess(true);
       setError(false);
-      setResponseData(response);
+      setResponseData(formStatusMessage.t(response));
     } catch (error) {
-      setResponseData(error instanceof Error ? error.message : String(error));
+      setResponseData(
+        error instanceof Error
+          ? formStatusMessage.t(error.message)
+          : String(error)
+      );
       setError(true);
       setSuccess(false);
     } finally {
