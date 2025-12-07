@@ -1,19 +1,15 @@
-"use server";
 import LoginCredentials from "../_types/LoginCredentials";
 
 const loginUser = async (loginCredentials: LoginCredentials) => {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,
-      {
-        method: "POST",
-        body: JSON.stringify(loginCredentials),
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`/api/login`, {
+      method: "POST",
+      body: JSON.stringify(loginCredentials),
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (!response.ok) {
       switch (response.status) {
@@ -26,7 +22,7 @@ const loginUser = async (loginCredentials: LoginCredentials) => {
       }
     }
 
-    return "200Message";
+    return "200LoginMessage";
   } catch (error) {
     console.error("Login error:", error);
     throw new Error(error instanceof Error ? error.message : String(error));
