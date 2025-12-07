@@ -1,5 +1,6 @@
 const i18nNamespaces = [
   "Login",
+  "FormStatus",
   "Register",
   "Themes",
   "EmailVerify",
