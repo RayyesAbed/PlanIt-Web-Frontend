@@ -4,5 +4,6 @@
   "400Error": "Ungültige Anmeldedaten! Bitte überprüfe deine Eingabefelder.",
   "401Error": "E-Mail, Passwort oder beides sind falsch!",
   "429Error": "Du hast versucht, dich zu oft zu registrieren! Versuch es später noch einmal.",
-  "verificationEmail": "Eine Bestätigungs-E-Mail wurde gesendet. Bitte überprüfe dein Postfach."
+  "verificationEmail": "Eine Bestätigungs-E-Mail wurde gesendet. Bitte überprüfe dein Postfach.",
+  "200LoginMessage": "Erfolgreich angemeldet!"
 }
