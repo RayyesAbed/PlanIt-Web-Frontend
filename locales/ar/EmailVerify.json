@@ -4,5 +4,6 @@
   "inProgressEmailVerification": "جارٍ التحقق من البريد الإلكتروني",
   "returnToRegisterButton": "العودة إلى التسجيل",
   "successfulEmailVerification": "تم التحقق من البريد الإلكتروني بنجاح",
-  "VerificationHeading": "تحقق من بريد المستخدم الإلكتروني"
+  "VerificationHeading": "تحقق من بريد المستخدم الإلكتروني",
+  "existingEmailVerification": "تم التحقق من البريد الإلكتروني من قبل"
 }
