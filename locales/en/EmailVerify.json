@@ -4,5 +4,6 @@
   "inProgressEmailVerification": "Email verification in progress",
   "returnToRegisterButton": "Return to Register",
   "successfulEmailVerification": "Email verified successfully",
-  "VerificationHeading": "User Email Verification"
+  "VerificationHeading": "User Email Verification",
+  "existingEmailVerification": "Email already verified"
 }
