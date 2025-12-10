@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import verifyEmail from "../action/verifyEmail";
+import emailVerificationCodes from "../_types/emailVerificationCodes";
 
 function useVerifyEmail(token?: string) {
-  const [status, setStatus] = useState<"loading" | "success" | "error">(
-    "loading"
-  );
+  const [status, setStatus] = useState<
+    "loading" | "success" | "alreadyVerified" | "error"
+  >("loading");
 
   useEffect(() => {
     if (!token) {
@@ -12,9 +13,18 @@ function useVerifyEmail(token?: string) {
       return;
     }
 
-    verifyEmail(token)
-      .then((data) => setStatus(data.hasFailed ? "error" : "success"))
-      .catch(() => setStatus("error"));
+    verifyEmail(token).then((data) => {
+      switch (data.code) {
+        case emailVerificationCodes.SUCCESS:
+          setStatus("success");
+          break;
+        case emailVerificationCodes.ALREADY_VERIFIED:
+          setStatus("alreadyVerified");
+          break;
+        default:
+          setStatus("error");
+      }
+    });
   }, [token]);
 
   return status;
