@@ -14,23 +14,34 @@ const Page = () => {
 
   const { t } = useTranslation("EmailVerify");
 
+  let emailVerificationMessage;
+
+  switch (emailVerificationStatus) {
+    case "loading":
+      emailVerificationMessage = t("inProgressEmailVerification");
+      break;
+    case "success":
+      emailVerificationMessage = t("successfulEmailVerification");
+      break;
+    case "alreadyVerified":
+      emailVerificationMessage = t("existingEmailVerification");
+      break;
+    default:
+      emailVerificationMessage = t("failedEmailVerification");
+  }
+
   return (
     <main className="w-full h-dvh flex flex-col items-center justify-center gap-7">
       <Logo />
       <h1 className="font-bold text-2xl">{t("VerificationHeading")}</h1>
-      <p>
-        {emailVerificationStatus == "success"
-          ? t("successfulEmailVerification")
-          : emailVerificationStatus == "loading"
-          ? t("inProgressEmailVerification")
-          : t("failedEmailVerification")}
-      </p>
+      <p>{emailVerificationMessage}</p>
 
-      {emailVerificationStatus == "success" && (
-        <Link href="/login">
-          <Button>{t("goToLoginButton")}</Button>
-        </Link>
-      )}
+      {emailVerificationStatus == "success" ||
+        (emailVerificationStatus == "alreadyVerified" && (
+          <Link href="/login">
+            <Button>{t("goToLoginButton")}</Button>
+          </Link>
+        ))}
 
       {emailVerificationStatus == "error" && (
         <Link href="/register">
