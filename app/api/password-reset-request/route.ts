@@ -1,5 +1,5 @@
-export async function POST(requst: Request) {
-  const body = await requst.json();
+export async function POST(request: Request) {
+  const body = await request.json();
 
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/reset-password-request`,
