@@ -14,6 +14,7 @@ import GoogleButton from "../../_components/GoogleButton";
 import AppleButton from "../../_components/AppleButton";
 import { useTranslation } from "react-i18next";
 import LoginCredentials from "./_types/LoginCredentials";
+import resetPasswordRequest from "./lib/resetPasswordRequest";
 
 const LoginPage = () => {
   const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({
@@ -57,6 +58,11 @@ const LoginPage = () => {
     } finally {
       setPending(false);
     }
+  };
+
+  const handlePasswordResetRequest = async (event: React.FormEvent) => {
+    event.preventDefault();
+    await resetPasswordRequest(loginCredentials.email);
   };
 
   const { t } = useTranslation("Login");
@@ -111,7 +117,9 @@ const LoginPage = () => {
               {isPending ? "Logging in..." : t("loginButtonText")}
             </Button>
             <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
-              <Link href="#">{t("forgotPasswordText")}</Link>
+              <Link onClick={handlePasswordResetRequest} href="#">
+                {t("forgotPasswordText")}
+              </Link>
               <Link href="/register">{t("newUsersRegisterText")}</Link>
             </section>
           </form>
