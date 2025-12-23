@@ -10,4 +10,9 @@ export async function POST(requst: Request) {
       body: JSON.stringify(body),
     }
   );
+
+  return new Response(await response.text(), {
+    status: response.status,
+    headers: response.headers,
+  });
 }
