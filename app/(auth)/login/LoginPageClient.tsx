@@ -16,6 +16,8 @@ import { useTranslation } from "react-i18next";
 import LoginCredentials from "./_types/LoginCredentials";
 import resetPasswordRequest from "./lib/resetPasswordRequest";
 
+type AsyncAction<T> = () => Promise<T>;
+
 const LoginPage = () => {
   const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({
     email: "",
@@ -38,15 +40,14 @@ const LoginPage = () => {
     setLoginCredentials({ ...loginCredentials, password: event.target.value });
   };
 
-  const handleLoginSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleAsyncAction = async <T,>(action: AsyncAction<T>) => {
     setPending(true);
 
     try {
-      const response = await loginUser(loginCredentials);
+      const response = await action();
       setSuccess(true);
       setError(false);
-      setResponseData(formStatusMessage.t(response));
+      setResponseData(formStatusMessage.t(String(response)));
     } catch (error) {
       setResponseData(
         error instanceof Error
@@ -60,9 +61,16 @@ const LoginPage = () => {
     }
   };
 
+  const handleLoginSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    handleAsyncAction(() => loginUser(loginCredentials));
+  };
+
   const handlePasswordResetRequest = async (event: React.FormEvent) => {
     event.preventDefault();
-    await resetPasswordRequest(loginCredentials.email);
+
+    handleAsyncAction(() => resetPasswordRequest(loginCredentials.email));
   };
 
   const { t } = useTranslation("Login");
