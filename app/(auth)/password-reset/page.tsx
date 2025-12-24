@@ -16,7 +16,7 @@ const Page = () => {
   const searchParams = useSearchParams();
   const token = searchParams.get("token") ?? undefined;
 
-  const { t } = useTranslation("PasswordReset");
+  const passwordResetLocale = useTranslation("PasswordReset");
 
   // TODO: Send the token with user's new password to backend and verify accordingly
 
@@ -27,7 +27,9 @@ const Page = () => {
   return (
     <main className="w-full h-dvh flex flex-col items-center justify-center gap-7">
       <Logo />
-      <h1 className="font-bold text-2xl">{t("passwordResetHeader")}</h1>
+      <h1 className="font-bold text-2xl">
+        {passwordResetLocale.t("passwordResetHeader")}
+      </h1>
       <form
         onSubmit={handlePasswordReset}
         className="flex flex-col items-center mb-20 gap-7"
@@ -36,12 +38,12 @@ const Page = () => {
           value={newPassword}
           onChange={(event) => setNewPassword(event.target.value)}
           type="password"
-          placeholder={t("newPasswordInput")}
+          placeholder={passwordResetLocale.t("newPasswordInput")}
           className="w-[300px] font-semibold"
           required
         />
         <Button className="w-[150px] font-bold cursor-pointer">
-          {t("resetPasswordButton")}
+          {passwordResetLocale.t("resetPasswordButton")}
         </Button>
       </form>
     </main>
