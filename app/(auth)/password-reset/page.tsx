@@ -16,11 +16,18 @@ const Page = () => {
 
   // TODO: Send the token with user's new password to backend and verify accordingly
 
+  const handlePasswordReset = (event: React.FormEvent) => {
+    event.preventDefault();
+  };
+
   return (
     <main className="w-full h-dvh flex flex-col items-center justify-center gap-7">
       <Logo />
       <h1 className="font-bold text-2xl">{t("passwordResetHeader")}</h1>
-      <form className="flex flex-col items-center mb-20 gap-7">
+      <form
+        onSubmit={handlePasswordReset}
+        className="flex flex-col items-center mb-20 gap-7"
+      >
         <Input
           value={newPassword}
           onChange={(event) => setNewPassword(event.target.value)}
