@@ -8,6 +8,10 @@ import { useTranslation } from "react-i18next";
 
 const Page = () => {
   const [newPassword, setNewPassword] = useState("");
+  const [isPending, setPending] = useState(false);
+  const [isError, setError] = useState(false);
+  const [isSuccess, setSuccess] = useState(false);
+  const [responseData, setResponseData] = useState("");
 
   const searchParams = useSearchParams();
   const token = searchParams.get("token") ?? undefined;
