@@ -20,7 +20,7 @@ const Page = () => {
     <main className="w-full h-dvh flex flex-col items-center justify-center gap-7">
       <Logo />
       <h1 className="font-bold text-2xl">{t("passwordResetHeader")}</h1>
-      <form>
+      <form className="flex flex-col items-center mb-20 gap-7">
         <Input
           value={newPassword}
           onChange={(event) => setNewPassword(event.target.value)}
