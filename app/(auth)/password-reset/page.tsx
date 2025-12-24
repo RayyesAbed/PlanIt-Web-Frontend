@@ -17,10 +17,11 @@ const Page = () => {
   const token = searchParams.get("token") ?? undefined;
 
   const passwordResetLocale = useTranslation("PasswordReset");
+  const formStatusMessage = useTranslation("FormStatus");
 
   // TODO: Send the token with user's new password to backend and verify accordingly
 
-  const handlePasswordReset = (event: React.FormEvent) => {
+  const handlePasswordReset = async (event: React.FormEvent) => {
     event.preventDefault();
   };
 
