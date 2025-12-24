@@ -3,9 +3,12 @@ import Logo from "@/app/_components/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useSearchParams } from "next/navigation";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const Page = () => {
+  const [newPassword, setNewPassword] = useState("");
+
   const searchParams = useSearchParams();
   const token = searchParams.get("token") ?? undefined;
 
@@ -18,6 +21,8 @@ const Page = () => {
       <Logo />
       <h1 className="font-bold text-2xl">{t("passwordResetHeader")}</h1>
       <Input
+        value={newPassword}
+        onChange={(event) => setNewPassword(event.target.value)}
         type="password"
         placeholder={t("newPasswordInput")}
         className="w-[300px] font-semibold"
