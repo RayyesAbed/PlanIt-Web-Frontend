@@ -20,17 +20,19 @@ const Page = () => {
     <main className="w-full h-dvh flex flex-col items-center justify-center gap-7">
       <Logo />
       <h1 className="font-bold text-2xl">{t("passwordResetHeader")}</h1>
-      <Input
-        value={newPassword}
-        onChange={(event) => setNewPassword(event.target.value)}
-        type="password"
-        placeholder={t("newPasswordInput")}
-        className="w-[300px] font-semibold"
-        required
-      />
-      <Button className="w-[150px] font-bold cursor-pointer">
-        {t("resetPasswordButton")}
-      </Button>
+      <form>
+        <Input
+          value={newPassword}
+          onChange={(event) => setNewPassword(event.target.value)}
+          type="password"
+          placeholder={t("newPasswordInput")}
+          className="w-[300px] font-semibold"
+          required
+        />
+        <Button className="w-[150px] font-bold cursor-pointer">
+          {t("resetPasswordButton")}
+        </Button>
+      </form>
     </main>
   );
 };
