@@ -1,28 +1,37 @@
 "use client";
 import Logo from "@/app/_components/Logo";
+import useAsyncAction from "@/app/_hooks/useAsyncAction";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import resetPassword from "./lib/resetPassword";
+import Link from "next/link";
 
 const Page = () => {
   const [newPassword, setNewPassword] = useState("");
-  const [isPending, setPending] = useState(false);
-  const [isError, setError] = useState(false);
-  const [isSuccess, setSuccess] = useState(false);
-  const [responseData, setResponseData] = useState("");
+
+  const { run, pending, success, error, responseData, setResponseData } =
+    useAsyncAction();
 
   const searchParams = useSearchParams();
-  const token = searchParams.get("token") ?? undefined;
+  const token = searchParams.get("token") ?? "";
 
   const passwordResetLocale = useTranslation("PasswordReset");
   const formStatusMessage = useTranslation("FormStatus");
 
-  // TODO: Send the token with user's new password to backend and verify accordingly
-
   const handlePasswordReset = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    try {
+      const response = await run(() => resetPassword(newPassword, token));
+      setResponseData(formStatusMessage.t(String(response)));
+    } catch (err) {
+      setResponseData(
+        err instanceof Error ? formStatusMessage.t(err.message) : String(err)
+      );
+    }
   };
 
   return (
@@ -31,22 +40,44 @@ const Page = () => {
       <h1 className="font-bold text-2xl">
         {passwordResetLocale.t("passwordResetHeader")}
       </h1>
-      <form
-        onSubmit={handlePasswordReset}
-        className="flex flex-col items-center mb-20 gap-7"
-      >
-        <Input
-          value={newPassword}
-          onChange={(event) => setNewPassword(event.target.value)}
-          type="password"
-          placeholder={passwordResetLocale.t("newPasswordInput")}
-          className="w-[300px] font-semibold"
-          required
-        />
-        <Button className="w-[150px] font-bold cursor-pointer">
-          {passwordResetLocale.t("resetPasswordButton")}
-        </Button>
-      </form>
+
+      {!success && (
+        <>
+          <form
+            onSubmit={handlePasswordReset}
+            className="flex flex-col items-center mb-20 gap-7"
+          >
+            <Input
+              value={newPassword}
+              onChange={(event) => setNewPassword(event.target.value)}
+              type="password"
+              placeholder={passwordResetLocale.t("newPasswordInput")}
+              className="w-[300px] font-semibold"
+              required
+            />
+            <Button
+              className="w-[150px] font-bold cursor-pointer"
+              disabled={pending}
+            >
+              {passwordResetLocale.t("resetPasswordButton")}
+            </Button>
+          </form>
+        </>
+      )}
+
+      {error && (
+        <p className="bg-red-900 text-white p-2 w-[150px mt-5 rounded-4xl text-center">
+          {responseData}
+        </p>
+      )}
+      {success && (
+        <>
+          <p>{responseData}</p>
+          <Link href="/login">
+            <Button>Go to login</Button>
+          </Link>
+        </>
+      )}
     </main>
   );
 };
