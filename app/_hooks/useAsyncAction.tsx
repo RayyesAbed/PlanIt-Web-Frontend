@@ -13,6 +13,17 @@ const useAsyncAction = () => {
       setPending(true);
       setSuccess(false);
       setError(false);
+      try {
+        const result = await action();
+        setSuccess(true);
+        onSuccess?.(result);
+        return result;
+      } catch (err) {
+        setError(true);
+        throw err;
+      } finally {
+        setPending(false);
+      }
     },
     []
   );
