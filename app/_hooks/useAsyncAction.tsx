@@ -30,6 +30,11 @@ const useAsyncAction = () => {
 
   return {
     run,
+    pending,
+    success,
+    error,
+    responseData,
+    setResponseData,
   };
 };
 
