@@ -9,7 +9,11 @@ const useAsyncAction = () => {
   const [responseData, setResponseData] = useState<string | null>(null);
 
   const run = useCallback(
-    async <T,>(action: AsyncAction<T>, onSuccess?: (result: T) => void) => {},
+    async <T,>(action: AsyncAction<T>, onSuccess?: (result: T) => void) => {
+      setPending(true);
+      setSuccess(false);
+      setError(false);
+    },
     []
   );
 
