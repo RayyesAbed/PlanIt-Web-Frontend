@@ -6,5 +6,6 @@
   "429Error": "Du hast vielmal versucht! Versuch es später noch einmal.",
   "verificationEmail": "Eine Bestätigungs-E-Mail wurde gesendet. Bitte überprüfe dein Postfach.",
   "200LoginMessage": "Erfolgreich angemeldet!",
-  "200PasswordResetRequestMessage": "Ein Link zum Zurücksetzen des Passworts wurde gesendet."
+  "200PasswordResetRequestMessage": "Ein Link zum Zurücksetzen des Passworts wurde gesendet.",
+  "200PasswordResetMessage": "Passwort wurde erfolgreich zurückgesetzt"
 }
