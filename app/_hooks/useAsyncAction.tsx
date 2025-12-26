@@ -7,6 +7,15 @@ const useAsyncAction = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [responseData, setResponseData] = useState<string | null>(null);
+
+  const run = useCallback(
+    async <T,>(action: AsyncAction<T>, onSuccess?: (result: T) => void) => {},
+    []
+  );
+
+  return {
+    run,
+  };
 };
 
 export default useAsyncAction;
