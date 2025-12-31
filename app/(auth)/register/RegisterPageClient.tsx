@@ -49,26 +49,12 @@ const RegisterPageClient = () => {
 
   const handleRegisterSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    setPending(true);
-
-    let response: string = "";
 
     try {
-      response = await registerUser(registerCredentials);
-      setResponseData(response);
-      setSuccess(true);
-      setRegisterCredentials({
-        name: "",
-        toBeConfirmedEmail: "",
-        birthDate: "",
-        language: "",
-        password: "",
-      });
-    } catch (error) {
-      setResponseData(error instanceof Error ? error.message : String(error));
-      setError(true);
-    } finally {
-      setPending(false);
+      const response = await run(() => registerUser(registerCredentials));
+      setResponseData(formStatusMessageLocale.t(response));
+    } catch (err) {
+      setResponseData(err instanceof Error ? err.message : String(err));
     }
   };
 
