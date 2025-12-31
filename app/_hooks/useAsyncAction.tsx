@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 
 type AsyncAction<T> = () => Promise<T>;
 
-const useAsyncAction = () => {
+const useAsyncFormAction = () => {
   const [pending, setPending] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -38,4 +38,4 @@ const useAsyncAction = () => {
   };
 };
 
-export default useAsyncAction;
+export default useAsyncFormAction;
