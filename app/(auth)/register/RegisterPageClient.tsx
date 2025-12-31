@@ -142,7 +142,7 @@ const RegisterPageClient = () => {
               }
             />
             <Button className="w-[150px] font-bold cursor-pointer">
-              {isPending
+              {pending
                 ? "Registering..."
                 : registerLocale.t("registerButtonText")}
             </Button>
@@ -152,12 +152,12 @@ const RegisterPageClient = () => {
               </Link>
             </section>
           </form>
-          {isSuccess && (
+          {success && (
             <p className="text-white p-2 mt-5 rounded-4xl text-center bg-green-900 ">
               {responseData}
             </p>
           )}
-          {isError && (
+          {error && (
             <p className="text-white p-2 mt-5 rounded-4xl text-center bg-red-900">
               {responseData}
             </p>
