@@ -36,6 +36,7 @@ const RegisterPageClient = () => {
   const [responseData, setResponseData] = useState("");
 
   const registerLocale = useTranslation("Register");
+  const formStatusMessageLocale = useTranslation("FormStatus");
 
   const updateRegisterCredentials = (
     field: keyof RegisterCredentials,
