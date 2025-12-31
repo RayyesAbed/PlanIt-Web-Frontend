@@ -18,6 +18,7 @@ import { useTranslation } from "react-i18next";
 import LanguageSelector from "@/components/LanguageSelector";
 import { useState } from "react";
 import RegisterCredentials from "./_types/RegisterCredentials";
+import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 
 const RegisterPageClient = () => {
   const isDesktop = useMediaQuery("(min-width: 1280px)");
@@ -30,10 +31,8 @@ const RegisterPageClient = () => {
       password: "",
     });
 
-  const [isPending, setPending] = useState(false);
-  const [isSuccess, setSuccess] = useState(false);
-  const [isError, setError] = useState(false);
-  const [responseData, setResponseData] = useState("");
+  const { run, pending, success, error, responseData, setResponseData } =
+    useAsyncFormAction();
 
   const registerLocale = useTranslation("Register");
   const formStatusMessageLocale = useTranslation("FormStatus");
