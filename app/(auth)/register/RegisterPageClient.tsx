@@ -35,7 +35,7 @@ const RegisterPageClient = () => {
   const [isError, setError] = useState(false);
   const [responseData, setResponseData] = useState("");
 
-  const { t } = useTranslation("Register"); // load properties from 'Register' namespace
+  const registerLocale = useTranslation("Register");
 
   const updateRegisterCredentials = (
     field: keyof RegisterCredentials,
@@ -92,7 +92,7 @@ const RegisterPageClient = () => {
         <ThemeToggle />
         <Logo />
         <h1 className="font-bold text-xl my-5 text-center">
-          {t("registerHeader")}
+          {registerLocale.t("registerHeader")}
         </h1>
         <section className="flex flex-col md:flex-row gap-5">
           {/* Register in with Google or Apple */}
@@ -108,7 +108,9 @@ const RegisterPageClient = () => {
         <section className="flex justify-center items-center my-5 w-full">
           {/* The continue with bar */}
           <div className="md:w-40 h-0.25 bg-gray-300"></div>
-          <span className="mx-2 text-center">{t("continueText")}</span>
+          <span className="mx-2 text-center">
+            {registerLocale.t("continueText")}
+          </span>
           <div className="md:w-40 h-0.25 bg-gray-300"></div>
         </section>
         <section className="flex-col items-center">
@@ -121,7 +123,7 @@ const RegisterPageClient = () => {
               onChange={(event) =>
                 updateRegisterCredentials("name", event.target.value)
               }
-              placeholder={t("userName")}
+              placeholder={registerLocale.t("userName")}
             />
             <EmailInput
               value={registerCredentials?.toBeConfirmedEmail ?? ""}
@@ -131,21 +133,21 @@ const RegisterPageClient = () => {
                   event.target.value
                 )
               }
-              placeholder={t("userEmail")}
+              placeholder={registerLocale.t("userEmail")}
             />
             <BirthDatePicker
               value={registerCredentials?.birthDate ?? ""}
               onChange={(birthDate) =>
                 updateRegisterCredentials("birthDate", birthDate)
               }
-              placeholder={t("userBirthDate")}
+              placeholder={registerLocale.t("userBirthDate")}
             />
             <PasswordInput
               value={registerCredentials.password}
               onChange={(event) =>
                 updateRegisterCredentials("password", event.target.value)
               }
-              placeholder={t("userPassword")}
+              placeholder={registerLocale.t("userPassword")}
             />
             <LanguageSelector
               value={registerCredentials.language}
@@ -154,10 +156,14 @@ const RegisterPageClient = () => {
               }
             />
             <Button className="w-[150px] font-bold cursor-pointer">
-              {isPending ? "Registering..." : t("registerButtonText")}
+              {isPending
+                ? "Registering..."
+                : registerLocale.t("registerButtonText")}
             </Button>
             <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
-              <Link href="/login">{t("existingUserLoginText")}</Link>
+              <Link href="/login">
+                {registerLocale.t("existingUserLoginText")}
+              </Link>
             </section>
           </form>
           {isSuccess && (
