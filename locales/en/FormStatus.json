@@ -4,7 +4,7 @@
   "400Error": "Invalid credentials! Please check your input fields",
   "401Error": "Incorrect email, password, or both!",
   "429Error": "You tried too many times! Try again later",
-  "verificationEmail": "A verification email has been sent, please check your mailbox",
+  "201RegisterMessage": "A verification email has been sent, please check your mailbox",
   "200LoginMessage": "Logged in successfully!",
   "200PasswordResetRequestMessage": "Password reset link sent successfully",
   "200PasswordResetMessage": "Password reset successfully"
