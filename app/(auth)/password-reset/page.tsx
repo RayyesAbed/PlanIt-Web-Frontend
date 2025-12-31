@@ -1,6 +1,6 @@
 "use client";
 import Logo from "@/app/_components/Logo";
-import useAsyncAction from "@/app/_hooks/useAsyncAction";
+import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useSearchParams } from "next/navigation";
@@ -13,7 +13,7 @@ const Page = () => {
   const [newPassword, setNewPassword] = useState("");
 
   const { run, pending, success, error, responseData, setResponseData } =
-    useAsyncAction();
+    useAsyncFormAction();
 
   const searchParams = useSearchParams();
   const token = searchParams.get("token") ?? "";
