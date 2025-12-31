@@ -54,7 +54,11 @@ const RegisterPageClient = () => {
       const response = await run(() => registerUser(registerCredentials));
       setResponseData(formStatusMessageLocale.t(response));
     } catch (err) {
-      setResponseData(err instanceof Error ? err.message : String(err));
+      setResponseData(
+        err instanceof Error
+          ? formStatusMessageLocale.t(err.message)
+          : String(err)
+      );
     }
   };
 
