@@ -40,6 +40,15 @@ const LoginPage = () => {
 
   const handleLoginSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    try {
+      const response = await run(() => loginUser(loginCredentials));
+      setResponseData(formStatusMessage.t(response));
+    } catch (err) {
+      setResponseData(
+        err instanceof Error ? formStatusMessage.t(err.message) : String(err)
+      );
+    }
   };
 
   const handlePasswordResetRequest = async (event: React.FormEvent) => {
