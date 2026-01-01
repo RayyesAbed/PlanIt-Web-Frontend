@@ -15,6 +15,7 @@ import AppleButton from "../../_components/AppleButton";
 import { useTranslation } from "react-i18next";
 import LoginCredentials from "./_types/LoginCredentials";
 import resetPasswordRequest from "./lib/resetPasswordRequest";
+import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 
 const LoginPage = () => {
   const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({
@@ -25,6 +26,9 @@ const LoginPage = () => {
   const formStatusMessage = useTranslation("FormStatus");
 
   const isDesktop = useMediaQuery("(min-width: 1280px)");
+
+  const { run, pending, success, error, responseData, setResponseData } =
+    useAsyncFormAction();
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLoginCredentials({ ...loginCredentials, email: event.target.value });
@@ -92,7 +96,7 @@ const LoginPage = () => {
             />
             <Button
               className="w-[150px] font-bold cursor-pointer"
-              disabled={isPending}
+              disabled={pending}
             >
               {t("loginButtonText")}
             </Button>
@@ -103,12 +107,12 @@ const LoginPage = () => {
               <Link href="/register">{t("newUsersRegisterText")}</Link>
             </section>
           </form>
-          {isError && (
+          {error && (
             <p className="bg-red-900 text-white p-2 mt-5 rounded-4xl text-center">
               {responseData}
             </p>
           )}
-          {isSuccess && (
+          {success && (
             <p className="bg-green-900 text-white p-2 mt-5 rounded-4xl text-center">
               {responseData}
             </p>
