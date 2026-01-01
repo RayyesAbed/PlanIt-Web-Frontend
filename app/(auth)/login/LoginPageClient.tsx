@@ -16,17 +16,11 @@ import { useTranslation } from "react-i18next";
 import LoginCredentials from "./_types/LoginCredentials";
 import resetPasswordRequest from "./lib/resetPasswordRequest";
 
-type AsyncAction<T> = () => Promise<T>;
-
 const LoginPage = () => {
   const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({
     email: "",
     password: "",
   });
-  const [isPending, setPending] = useState(false);
-  const [isError, setError] = useState(false);
-  const [isSuccess, setSuccess] = useState(false);
-  const [responseData, setResponseData] = useState("");
 
   const formStatusMessage = useTranslation("FormStatus");
 
@@ -40,37 +34,12 @@ const LoginPage = () => {
     setLoginCredentials({ ...loginCredentials, password: event.target.value });
   };
 
-  const handleAsyncAction = async <T,>(action: AsyncAction<T>) => {
-    setPending(true);
-
-    try {
-      const response = await action();
-      setSuccess(true);
-      setError(false);
-      setResponseData(formStatusMessage.t(String(response)));
-    } catch (error) {
-      setResponseData(
-        error instanceof Error
-          ? formStatusMessage.t(error.message)
-          : String(error)
-      );
-      setError(true);
-      setSuccess(false);
-    } finally {
-      setPending(false);
-    }
-  };
-
   const handleLoginSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
-    handleAsyncAction(() => loginUser(loginCredentials));
   };
 
   const handlePasswordResetRequest = async (event: React.FormEvent) => {
     event.preventDefault();
-
-    handleAsyncAction(() => resetPasswordRequest(loginCredentials.email));
   };
 
   const { t } = useTranslation("Login");
