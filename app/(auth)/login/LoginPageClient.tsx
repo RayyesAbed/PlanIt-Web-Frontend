@@ -53,6 +53,17 @@ const LoginPage = () => {
 
   const handlePasswordResetRequest = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    try {
+      const response = await run(() =>
+        resetPasswordRequest(loginCredentials.email)
+      );
+      setResponseData(formStatusMessage.t(response));
+    } catch (err) {
+      setResponseData(
+        err instanceof Error ? formStatusMessage.t(err.message) : String(err)
+      );
+    }
   };
 
   const { t } = useTranslation("Login");
