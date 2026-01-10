@@ -38,7 +38,7 @@ const LoginPage = () => {
     setLoginCredentials({ ...loginCredentials, password: event.target.value });
   };
 
-  const handleLoginSubmit = async (event: React.FormEvent) => {
+  const handleFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
@@ -93,7 +93,7 @@ const LoginPage = () => {
         </section>
         <section className="flex-col items-center">
           <form
-            onSubmit={handleLoginSubmit}
+            onSubmit={handleFormSubmit}
             className="flex flex-col items-center gap-3"
           >
             <Input
