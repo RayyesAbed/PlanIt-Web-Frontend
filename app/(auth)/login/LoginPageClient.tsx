@@ -23,6 +23,8 @@ const LoginPage = () => {
     password: "",
   });
 
+  const [action, useAction] = useState<"login" | "reset-password">("login");
+
   const formStatusMessage = useTranslation("FormStatus");
 
   const isDesktop = useMediaQuery("(min-width: 1280px)");
@@ -42,23 +44,15 @@ const LoginPage = () => {
     event.preventDefault();
 
     try {
-      const response = await run(() => loginUser(loginCredentials));
-      setResponseData(formStatusMessage.t(response));
-    } catch (err) {
-      setResponseData(
-        err instanceof Error ? formStatusMessage.t(err.message) : String(err)
-      );
-    }
-  };
-
-  const handlePasswordResetRequest = async (event: React.FormEvent) => {
-    event.preventDefault();
-
-    try {
-      const response = await run(() =>
-        resetPasswordRequest(loginCredentials.email)
-      );
-      setResponseData(formStatusMessage.t(response));
+      if (action === "login") {
+        const response = await run(() => loginUser(loginCredentials));
+        setResponseData(formStatusMessage.t(response));
+      } else {
+        const response = await run(() =>
+          resetPasswordRequest(loginCredentials.email)
+        );
+        setResponseData(formStatusMessage.t(response));
+      }
     } catch (err) {
       setResponseData(
         err instanceof Error ? formStatusMessage.t(err.message) : String(err)
