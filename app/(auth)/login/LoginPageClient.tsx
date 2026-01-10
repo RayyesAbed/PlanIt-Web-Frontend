@@ -68,7 +68,7 @@ const LoginPage = () => {
         <ThemeToggle />
         <Logo />
         <h1 className="font-bold text-xl my-5">{t("loginHeader")}</h1>
-        <section className="flex flex-col md:flex-row gap-5">
+        <section className="flex md:flex-row gap-5">
           {/* Sign in with Google or Apple */}
           <GoogleButton
             buttonAlt="Sign in with Google Icon"

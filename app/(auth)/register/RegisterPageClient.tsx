@@ -84,7 +84,7 @@ const RegisterPageClient = () => {
         <h1 className="font-bold text-xl my-5 text-center">
           {registerLocale.t("registerHeader")}
         </h1>
-        <section className="flex flex-col md:flex-row gap-5">
+        <section className="flex md:flex-row gap-5">
           {/* Register in with Google or Apple */}
           <GoogleButton
             buttonAlt="Register with Google Icon"
