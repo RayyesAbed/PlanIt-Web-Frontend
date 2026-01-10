@@ -121,9 +121,9 @@ const LoginPage = () => {
               {t("loginButtonText")}
             </Button>
             <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
-              <Link onClick={handlePasswordResetRequest} href="#">
+              <button type="submit" value="reset-password">
                 {t("forgotPasswordText")}
-              </Link>
+              </button>
               <Link href="/register">{t("newUsersRegisterText")}</Link>
             </section>
           </form>
