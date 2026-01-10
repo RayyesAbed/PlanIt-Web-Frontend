@@ -23,7 +23,7 @@ const LoginPage = () => {
     password: "",
   });
 
-  const [action, useAction] = useState<"login" | "reset-password">("login");
+  const [action, setAction] = useState<"login" | "reset-password">("login");
 
   const formStatusMessage = useTranslation("FormStatus");
 
@@ -106,16 +106,21 @@ const LoginPage = () => {
               onChange={handlePasswordChange}
               placeholder={t("userPassword")}
               className="w-[300px] font-semibold"
-              required={true}
+              required={action === "login"}
             />
             <Button
               className="w-[150px] font-bold cursor-pointer"
+              onClick={() => setAction("login")}
               disabled={pending}
             >
               {t("loginButtonText")}
             </Button>
             <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
-              <button type="submit" value="reset-password">
+              <button
+                type="submit"
+                value="reset-password"
+                onClick={() => setAction("reset-password")}
+              >
                 {t("forgotPasswordText")}
               </button>
               <Link href="/register">{t("newUsersRegisterText")}</Link>
