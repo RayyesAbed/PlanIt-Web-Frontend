@@ -6,6 +6,6 @@ export const metadata: Metadata = {
   description: "Create a new account to start your journey",
 };
 
-export default function Page() {
+export default function RegisterPage() {
   return <RegisterPageClient />;
 }
