@@ -7,14 +7,14 @@ import RandomLoginModel from "./_components/RandomLoginModel";
 import Logo from "@/app/_components/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import loginUser from "./lib/loginUser";
+import loginUser from "./_actions/loginUser";
 import ThemeToggle from "@/components/ThemeToggle";
 import useMediaQuery from "@/app/_hooks/useMediaQuery";
 import GoogleButton from "../../_components/GoogleButton";
 import AppleButton from "../../_components/AppleButton";
 import { useTranslation } from "react-i18next";
 import LoginCredentials from "./_types/LoginCredentials";
-import resetPasswordRequest from "./lib/resetPasswordRequest";
+import resetPasswordRequest from "./_actions/resetPasswordRequest";
 import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 
 const LoginPage = () => {
