@@ -26,6 +26,7 @@ const LoginPage = () => {
   const [action, setAction] = useState<"login" | "reset-password">("login");
 
   const formStatusMessage = useTranslation("FormStatus");
+  const loginLocale = useTranslation("Login");
 
   const isDesktop = useMediaQuery("(min-width: 1280px)");
 
@@ -60,14 +61,14 @@ const LoginPage = () => {
     }
   };
 
-  const { t } = useTranslation("Login");
-
   return (
     <main className="flex items-center h-screen gap-5 mx-5">
       <section className="flex flex-col items-center flex-1/2 ">
         <ThemeToggle />
         <Logo />
-        <h1 className="font-bold text-xl my-5">{t("loginHeader")}</h1>
+        <h1 className="font-bold text-xl my-5">
+          {loginLocale.t("loginHeader")}
+        </h1>
         <section className="flex md:flex-row gap-5">
           {/* Sign in with Google or Apple */}
           <GoogleButton
@@ -82,7 +83,9 @@ const LoginPage = () => {
         <section className="flex justify-center items-center my-5 w-full">
           {/* The continue with bar */}
           <div className="md:w-40 h-0.25 bg-gray-300"></div>
-          <span className="mx-2 text-center">{t("continueText")}</span>
+          <span className="mx-2 text-center">
+            {loginLocale.t("continueText")}
+          </span>
           <div className="md:w-40 h-0.25 bg-gray-300"></div>
         </section>
         <section className="flex-col items-center">
@@ -95,7 +98,7 @@ const LoginPage = () => {
               type="email"
               value={loginCredentials.email}
               onChange={handleEmailChange}
-              placeholder={t("userEmail")}
+              placeholder={loginLocale.t("userEmail")}
               className="w-[300px] font-semibold"
               required={true}
             />
@@ -104,7 +107,7 @@ const LoginPage = () => {
               type="password"
               value={loginCredentials.password}
               onChange={handlePasswordChange}
-              placeholder={t("userPassword")}
+              placeholder={loginLocale.t("userPassword")}
               className="w-[300px] font-semibold"
               required={action === "login"}
             />
@@ -113,7 +116,7 @@ const LoginPage = () => {
               onClick={() => setAction("login")}
               disabled={pending}
             >
-              {t("loginButtonText")}
+              {loginLocale.t("loginButtonText")}
             </Button>
             <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
               <button
@@ -121,9 +124,11 @@ const LoginPage = () => {
                 value="reset-password"
                 onClick={() => setAction("reset-password")}
               >
-                {t("forgotPasswordText")}
+                {loginLocale.t("forgotPasswordText")}
               </button>
-              <Link href="/register">{t("newUsersRegisterText")}</Link>
+              <Link href="/register">
+                {loginLocale.t("newUsersRegisterText")}
+              </Link>
             </section>
           </form>
           {error && (
