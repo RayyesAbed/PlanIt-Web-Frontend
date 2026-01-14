@@ -18,6 +18,7 @@ import resetPasswordRequest from "./lib/resetPasswordRequest";
 import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 
 const LoginPage = () => {
+  const isDesktop = useMediaQuery("(min-width: 1280px)");
   const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({
     email: "",
     password: "",
@@ -25,13 +26,11 @@ const LoginPage = () => {
 
   const [action, setAction] = useState<"login" | "reset-password">("login");
 
-  const formStatusLocale = useTranslation("FormStatus");
-  const loginLocale = useTranslation("Login");
-
-  const isDesktop = useMediaQuery("(min-width: 1280px)");
-
   const { run, pending, success, error, responseData, setResponseData } =
     useAsyncFormAction();
+
+  const formStatusLocale = useTranslation("FormStatus");
+  const loginLocale = useTranslation("Login");
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLoginCredentials({ ...loginCredentials, email: event.target.value });
