@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import verifyEmail from "../action/verifyEmail";
+import verifyEmail from "../_actions/verifyEmail";
 import emailVerificationCodes from "../_types/emailVerificationCodes";
 
 function useVerifyEmail(token?: string) {
