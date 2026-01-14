@@ -17,7 +17,7 @@ import LoginCredentials from "./_types/LoginCredentials";
 import resetPasswordRequest from "./_actions/resetPasswordRequest";
 import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 
-const LoginPage = () => {
+const LoginPageClient = () => {
   const isDesktop = useMediaQuery("(min-width: 1280px)");
   const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({
     email: "",
@@ -162,4 +162,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginPageClient;
