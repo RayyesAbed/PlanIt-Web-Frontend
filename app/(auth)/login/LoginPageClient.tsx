@@ -25,7 +25,7 @@ const LoginPage = () => {
 
   const [action, setAction] = useState<"login" | "reset-password">("login");
 
-  const formStatusMessage = useTranslation("FormStatus");
+  const formStatusLocale = useTranslation("FormStatus");
   const loginLocale = useTranslation("Login");
 
   const isDesktop = useMediaQuery("(min-width: 1280px)");
@@ -47,16 +47,16 @@ const LoginPage = () => {
     try {
       if (action === "login") {
         const response = await run(() => loginUser(loginCredentials));
-        setResponseData(formStatusMessage.t(response));
+        setResponseData(formStatusLocale.t(response));
       } else {
         const response = await run(() =>
           resetPasswordRequest(loginCredentials.email)
         );
-        setResponseData(formStatusMessage.t(response));
+        setResponseData(formStatusLocale.t(response));
       }
     } catch (err) {
       setResponseData(
-        err instanceof Error ? formStatusMessage.t(err.message) : String(err)
+        err instanceof Error ? formStatusLocale.t(err.message) : String(err)
       );
     }
   };
