@@ -10,7 +10,7 @@ import AppleButton from "../../_components/AppleButton";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { BirthDatePicker } from "./_components/inputs/BirthDatePicker";
-import registerUser from "./actions/registerUser";
+import registerUser from "./_actions/registerUser";
 import NameInput from "./_components/inputs/NameInput";
 import EmailInput from "@/components/sharedFormInputs/EmailInput";
 import PasswordInput from "./_components/inputs/PasswordInput";
