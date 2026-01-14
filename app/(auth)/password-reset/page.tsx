@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import resetPassword from "./lib/resetPassword";
+import resetPassword from "./_actions/resetPassword";
 import Link from "next/link";
 
 const Page = () => {
