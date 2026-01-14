@@ -6,6 +6,6 @@ export const metadata: Metadata = {
   description: "Login to continue your journey",
 };
 
-export default function Page() {
+export default function LoginPage() {
   return <LoginPageClient />;
 }
