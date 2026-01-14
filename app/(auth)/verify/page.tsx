@@ -12,40 +12,48 @@ const Page = () => {
 
   const emailVerificationStatus = useVerifyEmail(token);
 
-  const { t } = useTranslation("EmailVerify");
+  const emailVerifyLocale = useTranslation("EmailVerify");
 
   let emailVerificationMessage;
 
   switch (emailVerificationStatus) {
     case "loading":
-      emailVerificationMessage = t("inProgressEmailVerification");
+      emailVerificationMessage = emailVerifyLocale.t(
+        "inProgressEmailVerification"
+      );
       break;
     case "success":
-      emailVerificationMessage = t("successfulEmailVerification");
+      emailVerificationMessage = emailVerifyLocale.t(
+        "successfulEmailVerification"
+      );
       break;
     case "alreadyVerified":
-      emailVerificationMessage = t("existingEmailVerification");
+      emailVerificationMessage = emailVerifyLocale.t(
+        "existingEmailVerification"
+      );
       break;
     default:
-      emailVerificationMessage = t("failedEmailVerification");
+      emailVerificationMessage = emailVerifyLocale.t("failedEmailVerification");
   }
 
   return (
     <main className="w-full h-dvh flex flex-col items-center justify-center gap-7">
       <Logo />
-      <h1 className="font-bold text-2xl">{t("VerificationHeading")}</h1>
+      <h1 className="font-bold text-2xl">
+        {emailVerifyLocale.t("VerificationHeading")}
+      </h1>
       <p>{emailVerificationMessage}</p>
 
       {emailVerificationStatus == "success" ||
         (emailVerificationStatus == "alreadyVerified" && (
           <Link href="/login">
-            <Button>{t("goToLoginButton")}</Button>
+            <Button>{emailVerifyLocale.t("goToLoginButton")}</Button>
           </Link>
         ))}
 
       {emailVerificationStatus == "error" && (
         <Link href="/register">
-          <Button>{t("returnToRegisterButton")}</Button>
+          <Button>{emailVerifyLocale.t("returnToRegisterButton")}</Button>
         </Link>
       )}
     </main>
