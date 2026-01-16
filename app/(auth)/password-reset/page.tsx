@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import resetPassword from "./_actions/resetPassword";
 import Link from "next/link";
 
-const Page = () => {
+const PasswordReset = () => {
   const [newPassword, setNewPassword] = useState("");
 
   const { run, pending, success, error, responseData, setResponseData } =
@@ -82,4 +82,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default PasswordReset;
