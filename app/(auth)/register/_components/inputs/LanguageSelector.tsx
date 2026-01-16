@@ -4,7 +4,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/app/_components/shared/ui/select";
 import { useTranslation } from "react-i18next";
 
 const LanguageSelector = ({
