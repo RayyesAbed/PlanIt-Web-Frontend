@@ -11,11 +11,10 @@ import { Button } from "@/app/_components/shared/ui/button";
 import Link from "next/link";
 import { BirthDatePicker } from "./_components/inputs/BirthDatePicker";
 import registerUser from "./_actions/registerUser";
-import NameInput from "./_components/inputs/NameInput";
 import { Input } from "@/app/_components/shared/ui/input";
 import PasswordInput from "./_components/inputs/PasswordInput";
 import { useTranslation } from "react-i18next";
-import LanguageSelector from "@/components/LanguageSelector";
+import LanguageSelector from "@/app/(auth)/register/_components/inputs/LanguageSelector";
 import { useState } from "react";
 import RegisterCredentials from "./_types/RegisterCredentials";
 import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
@@ -108,7 +107,7 @@ const RegisterPageClient = () => {
             onSubmit={handleRegisterSubmit}
             className="flex flex-col items-center gap-3"
           >
-            <NameInput
+            <Input
               value={registerCredentials?.name ?? ""}
               onChange={(event) =>
                 updateRegisterCredentials("name", event.target.value)
