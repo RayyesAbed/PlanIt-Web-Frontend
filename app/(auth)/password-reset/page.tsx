@@ -1,5 +1,5 @@
 "use client";
-import Logo from "@/app/_components/Logo";
+import Logo from "@/app/_components/shared/logo/Logo";
 import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

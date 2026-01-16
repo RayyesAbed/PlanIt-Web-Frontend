@@ -4,7 +4,7 @@ import { OrbitControls } from "@react-three/drei";
 import useMediaQuery from "@/app/_hooks/useMediaQuery";
 import RandomRegisterModel from "./_components/RandomRegisterModel";
 import ThemeToggle from "@/components/ThemeToggle";
-import Logo from "@/app/_components/Logo";
+import Logo from "@/app/_components/shared/logo/Logo";
 import GoogleButton from "../../_components/auth/GoogleButton";
 import AppleButton from "../../_components/auth/AppleButton";
 import { Button } from "@/components/ui/button";

@@ -1,5 +1,5 @@
 "use client";
-import Logo from "@/app/_components/Logo";
+import Logo from "@/app/_components/shared/logo/Logo";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";

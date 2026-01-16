@@ -4,7 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Link from "next/link";
 import RandomLoginModel from "./_components/RandomLoginModel";
-import Logo from "@/app/_components/Logo";
+import Logo from "@/app/_components/shared/logo/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import loginUser from "./_actions/loginUser";
