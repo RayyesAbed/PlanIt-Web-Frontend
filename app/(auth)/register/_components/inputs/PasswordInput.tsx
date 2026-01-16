@@ -1,9 +1,9 @@
-import { Input } from "@/components/ui/input";
+import { Input } from "@/app/_components/shared/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/app/_components/shared/ui/popover";
 import { useTranslation } from "react-i18next";
 
 const PasswordInput = ({
