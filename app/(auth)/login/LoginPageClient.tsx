@@ -8,7 +8,7 @@ import Logo from "@/app/_components/shared/logo/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import loginUser from "./_actions/loginUser";
-import ThemeToggle from "@/components/ThemeToggle";
+import ThemeToggle from "@/app/_components/themeToggle/ThemeToggle";
 import useMediaQuery from "@/app/_hooks/useMediaQuery";
 import GoogleButton from "../../_components/auth/GoogleButton";
 import AppleButton from "../../_components/auth/AppleButton";
