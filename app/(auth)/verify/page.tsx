@@ -6,7 +6,7 @@ import { Button } from "@/app/_components/shared/ui/button";
 import useVerifyEmail from "./_hooks/useVerifyEmail";
 import { useTranslation } from "react-i18next";
 
-const Page = () => {
+const EmailVerify = () => {
   const searchParams = useSearchParams();
   const token = searchParams.get("token") ?? undefined;
 
@@ -60,4 +60,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default EmailVerify;
