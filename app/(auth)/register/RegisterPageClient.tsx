@@ -12,7 +12,7 @@ import Link from "next/link";
 import { BirthDatePicker } from "./_components/inputs/BirthDatePicker";
 import registerUser from "./_actions/registerUser";
 import NameInput from "./_components/inputs/NameInput";
-import EmailInput from "@/components/sharedFormInputs/EmailInput";
+import { Input } from "@/components/ui/input";
 import PasswordInput from "./_components/inputs/PasswordInput";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "@/components/LanguageSelector";
@@ -115,7 +115,7 @@ const RegisterPageClient = () => {
               }
               placeholder={registerLocale.t("userName")}
             />
-            <EmailInput
+            <Input
               value={registerCredentials?.toBeConfirmedEmail ?? ""}
               onChange={(event) =>
                 updateRegisterCredentials(
