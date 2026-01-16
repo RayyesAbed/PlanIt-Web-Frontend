@@ -2,7 +2,7 @@
 import Logo from "@/app/_components/shared/logo/Logo";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/_components/shared/ui/button";
 import useVerifyEmail from "./_hooks/useVerifyEmail";
 import { useTranslation } from "react-i18next";
 
