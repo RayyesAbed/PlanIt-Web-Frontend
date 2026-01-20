@@ -113,6 +113,7 @@ const RegisterPageClient = () => {
                 updateRegisterCredentials("name", event.target.value)
               }
               placeholder={registerLocale.t("userName")}
+              className="w-[300px]"
             />
             <Input
               value={registerCredentials?.toBeConfirmedEmail ?? ""}
@@ -123,6 +124,7 @@ const RegisterPageClient = () => {
                 )
               }
               placeholder={registerLocale.t("userEmail")}
+              className="w-[300px]"
             />
             <BirthDatePicker
               value={registerCredentials?.birthDate ?? ""}
