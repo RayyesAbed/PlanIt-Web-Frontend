@@ -1,4 +1,5 @@
 {
+  "InvalidNamePopup": "Name must contain letters only.",
   "emptyFieldsError": "One of the fields is empty or invalid, please check them",
   "500Error": "Unable to reach the server. Please check your internet connection.",
   "400Error": "Invalid credentials! Please check your input fields",
