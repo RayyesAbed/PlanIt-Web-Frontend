@@ -27,6 +27,8 @@ const PasswordInput = ({
           onChange={onChange}
           placeholder={placeholder}
           className="w-[300px] font-semibold"
+          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}"
+          title="Must be at least 8 characters and include uppercase, lowercase, a number, and a special character."
           required={true}
         />
       </PopoverTrigger>
