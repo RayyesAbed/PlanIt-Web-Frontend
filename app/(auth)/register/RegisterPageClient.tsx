@@ -115,6 +115,7 @@ const RegisterPageClient = () => {
               }
               placeholder={registerLocale.t("userName")}
               className="w-[300px]"
+              required
             />
             <Input
               type="email"
@@ -127,6 +128,7 @@ const RegisterPageClient = () => {
               }
               placeholder={registerLocale.t("userEmail")}
               className="w-[300px]"
+              required
             />
             <BirthDatePicker
               value={registerCredentials?.birthDate ?? ""}
