@@ -1,4 +1,5 @@
 {
+  "InvalidNamePopup": "Name muss nur Buchstaben enthalten.",
   "emptyFieldsError": "Eines der Felder ist leer oder ungültig. Bitte überprüfe deine Eingaben.",
   "500Error": "Der Server konnte nicht erreicht werden. Bitte überprüfe deine Internetverbindung.",
   "400Error": "Ungültige Anmeldedaten! Bitte überprüfe deine Eingabefelder.",
