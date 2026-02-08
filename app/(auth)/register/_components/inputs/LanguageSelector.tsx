@@ -18,7 +18,12 @@ const LanguageSelector = ({
 
   return (
     <div className="w-[300px]">
-      <Select name="language" value={value} onValueChange={onSelect}>
+      <Select
+        name="language"
+        value={value || undefined}
+        onValueChange={onSelect}
+        required
+      >
         <SelectTrigger className="w-full">
           <SelectValue placeholder={t("yourLanguage")} />
         </SelectTrigger>
