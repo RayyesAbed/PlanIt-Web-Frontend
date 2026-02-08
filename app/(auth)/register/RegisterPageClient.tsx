@@ -115,6 +115,8 @@ const RegisterPageClient = () => {
               }
               placeholder={registerLocale.t("userName")}
               className="w-[300px]"
+              pattern="[\p{L} ]+"
+              title="Name must contain letters only."
               required
             />
             <Input
