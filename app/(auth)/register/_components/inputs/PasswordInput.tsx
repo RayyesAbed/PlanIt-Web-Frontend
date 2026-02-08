@@ -15,7 +15,7 @@ const PasswordInput = ({
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
-  const { t } = useTranslation("Register");
+  const registerLocale = useTranslation("Register");
 
   return (
     <Popover>
@@ -33,12 +33,12 @@ const PasswordInput = ({
         />
       </PopoverTrigger>
       <PopoverContent className="w[300px]" align="center">
-        {t("passwordPolicy.text")}
+        {registerLocale.t("passwordPolicy.text")}
         <ol className="list-decimal list-inside">
-          <li>{t("passwordPolicy.number")}</li>
-          <li>{t("passwordPolicy.lowercaseLetter")}</li>
-          <li>{t("passwordPolicy.uppercaseLetter")}</li>
-          <li>{t("passwordPolicy.specialCharacter")}</li>
+          <li>{registerLocale.t("passwordPolicy.number")}</li>
+          <li>{registerLocale.t("passwordPolicy.lowercaseLetter")}</li>
+          <li>{registerLocale.t("passwordPolicy.uppercaseLetter")}</li>
+          <li>{registerLocale.t("passwordPolicy.specialCharacter")}</li>
         </ol>
       </PopoverContent>
     </Popover>
