@@ -38,7 +38,7 @@ const RegisterPageClient = () => {
 
   const updateRegisterCredentials = (
     field: keyof RegisterCredentials,
-    value: string
+    value: string,
   ) => {
     setRegisterCredentials((prev) => ({
       ...prev,
@@ -56,7 +56,7 @@ const RegisterPageClient = () => {
       setResponseData(
         err instanceof Error
           ? formStatusMessageLocale.t(err.message)
-          : String(err)
+          : String(err),
       );
     }
   };
@@ -108,6 +108,7 @@ const RegisterPageClient = () => {
             className="flex flex-col items-center gap-3"
           >
             <Input
+              type="text"
               value={registerCredentials?.name ?? ""}
               onChange={(event) =>
                 updateRegisterCredentials("name", event.target.value)
@@ -116,11 +117,12 @@ const RegisterPageClient = () => {
               className="w-[300px]"
             />
             <Input
+              type="email"
               value={registerCredentials?.toBeConfirmedEmail ?? ""}
               onChange={(event) =>
                 updateRegisterCredentials(
                   "toBeConfirmedEmail",
-                  event.target.value
+                  event.target.value,
                 )
               }
               placeholder={registerLocale.t("userEmail")}
