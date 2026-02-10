@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import resetPassword from "./_actions/resetPassword";
 import Link from "next/link";
+import PasswordInput from "../register/_components/inputs/PasswordInput";
 
 const PasswordReset = () => {
   const [newPassword, setNewPassword] = useState("");
@@ -29,7 +30,7 @@ const PasswordReset = () => {
       setResponseData(formStatusMessage.t(String(response)));
     } catch (err) {
       setResponseData(
-        err instanceof Error ? formStatusMessage.t(err.message) : String(err)
+        err instanceof Error ? formStatusMessage.t(err.message) : String(err),
       );
     }
   };
@@ -47,13 +48,10 @@ const PasswordReset = () => {
             onSubmit={handlePasswordReset}
             className="flex flex-col items-center mb-20 gap-7"
           >
-            <Input
+            <PasswordInput
               value={newPassword}
               onChange={(event) => setNewPassword(event.target.value)}
-              type="password"
               placeholder={passwordResetLocale.t("newPasswordInput")}
-              className="w-[300px] font-semibold"
-              required
             />
             <Button
               className="w-[150px] font-bold cursor-pointer"
