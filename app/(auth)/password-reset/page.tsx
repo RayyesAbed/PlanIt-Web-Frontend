@@ -2,7 +2,6 @@
 import Logo from "@/app/_components/shared/logo/Logo";
 import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 import { Button } from "@/app/_components/shared/ui/button";
-import { Input } from "@/app/_components/shared/ui/input";
 import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
