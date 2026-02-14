@@ -115,11 +115,7 @@ const LoginPageClient = () => {
                   className="w-[300px] font-semibold"
                   required={action === "login"}
                 />
-                <Button
-                  className="w-[150px] font-bold cursor-pointer"
-                  onClick={() => setAction("login")}
-                  disabled={pending}
-                >
+                <Button onClick={() => setAction("login")} disabled={pending}>
                   {loginLocale.t("loginButtonText")}
                 </Button>
                 <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">

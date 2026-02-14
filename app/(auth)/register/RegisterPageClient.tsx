@@ -159,7 +159,7 @@ const RegisterPageClient = () => {
                     updateRegisterCredentials("language", language)
                   }
                 />
-                <Button className="w-[150px] font-bold cursor-pointer">
+                <Button>
                   {pending
                     ? "Registering..."
                     : registerLocale.t("registerButtonText")}

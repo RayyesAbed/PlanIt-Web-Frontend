@@ -52,10 +52,7 @@ const PasswordReset = () => {
               onChange={(event) => setNewPassword(event.target.value)}
               placeholder={passwordResetLocale.t("newPasswordInput")}
             />
-            <Button
-              className="w-[150px] font-bold cursor-pointer"
-              disabled={pending}
-            >
+            <Button disabled={pending}>
               {passwordResetLocale.t("resetPasswordButton")}
             </Button>
           </form>
