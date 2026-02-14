@@ -11,14 +11,14 @@ const Logo = () => {
         width={160}
         height={160}
         alt="PlanIt Daytime Logo"
-        className="rounded-4xl block dark:hidden"
+        className="rounded-4xl block dark:hidden shadow-xl"
       />
       <Image
         src={PlanItDarkLogo}
         width={160}
         height={160}
         alt="PlanIt Dark Logo"
-        className="rounded-4xl hidden dark:block"
+        className="rounded-4xl hidden dark:block shadow-xl"
       />
     </Link>
   );
