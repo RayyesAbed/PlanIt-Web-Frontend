@@ -154,7 +154,7 @@ const LoginPageClient = () => {
           {/* Login 3D model */}
           <Canvas
             camera={{ position: [0, 2, 5], fov: 50 }}
-            className="bg-gray-200 dark:bg-gray-100 rounded-4xl"
+            className="bg-gray-200 dark:bg-gray-100 rounded-4xl shadow-xl"
           >
             <ambientLight intensity={0.5} />
             <directionalLight position={[10, 10, 5]} intensity={3} />
