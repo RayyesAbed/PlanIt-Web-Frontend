@@ -1,13 +1,13 @@
 "use client";
 import Logo from "@/app/_components/shared/logo/Logo";
 import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
-import { Button } from "@/app/_components/shared/ui/button";
 import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import resetPassword from "./_actions/resetPassword";
 import Link from "next/link";
 import PasswordInput from "../register/_components/inputs/PasswordInput";
+import AuthButton from "@/app/_components/shared/ui/authButton";
 
 const PasswordReset = () => {
   const [newPassword, setNewPassword] = useState("");
@@ -52,9 +52,9 @@ const PasswordReset = () => {
               onChange={(event) => setNewPassword(event.target.value)}
               placeholder={passwordResetLocale.t("newPasswordInput")}
             />
-            <Button disabled={pending}>
+            <AuthButton disabled={pending}>
               {passwordResetLocale.t("resetPasswordButton")}
-            </Button>
+            </AuthButton>
           </form>
         </>
       )}
@@ -68,7 +68,7 @@ const PasswordReset = () => {
         <>
           <p>{responseData}</p>
           <Link href="/login">
-            <Button>Go to login</Button>
+            <AuthButton>Go to login</AuthButton>
           </Link>
         </>
       )}

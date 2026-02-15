@@ -7,7 +7,6 @@ import ThemeToggle from "@/app/_components/themeToggle/ThemeToggle";
 import Logo from "@/app/_components/shared/logo/Logo";
 import GoogleButton from "../../_components/auth/GoogleButton";
 import AppleButton from "../../_components/auth/AppleButton";
-import { Button } from "@/app/_components/shared/ui/button";
 import Link from "next/link";
 import { BirthDatePicker } from "./_components/inputs/BirthDatePicker";
 import registerUser from "./_actions/registerUser";
@@ -19,6 +18,7 @@ import { useState } from "react";
 import RegisterCredentials from "./_types/RegisterCredentials";
 import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 import SpinnerFeedback from "@/app/_components/shared/ui/spinnerFeedback";
+import AuthButton from "@/app/_components/shared/ui/authButton";
 
 const RegisterPageClient = () => {
   const isDesktop = useMediaQuery("(min-width: 1280px)");
@@ -159,11 +159,11 @@ const RegisterPageClient = () => {
                     updateRegisterCredentials("language", language)
                   }
                 />
-                <Button>
+                <AuthButton>
                   {pending
                     ? "Registering..."
                     : registerLocale.t("registerButtonText")}
-                </Button>
+                </AuthButton>
                 <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
                   <Link href="/login">
                     {registerLocale.t("existingUserLoginText")}

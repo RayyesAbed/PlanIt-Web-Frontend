@@ -2,9 +2,9 @@
 import Logo from "@/app/_components/shared/logo/Logo";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Button } from "@/app/_components/shared/ui/button";
 import useVerifyEmail from "./_hooks/useVerifyEmail";
 import { useTranslation } from "react-i18next";
+import AuthButton from "@/app/_components/shared/ui/authButton";
 
 const EmailVerify = () => {
   const searchParams = useSearchParams();
@@ -19,17 +19,17 @@ const EmailVerify = () => {
   switch (emailVerificationStatus) {
     case "loading":
       emailVerificationMessage = emailVerifyLocale.t(
-        "inProgressEmailVerification"
+        "inProgressEmailVerification",
       );
       break;
     case "success":
       emailVerificationMessage = emailVerifyLocale.t(
-        "successfulEmailVerification"
+        "successfulEmailVerification",
       );
       break;
     case "alreadyVerified":
       emailVerificationMessage = emailVerifyLocale.t(
-        "existingEmailVerification"
+        "existingEmailVerification",
       );
       break;
     default:
@@ -47,13 +47,15 @@ const EmailVerify = () => {
       {emailVerificationStatus == "success" ||
         (emailVerificationStatus == "alreadyVerified" && (
           <Link href="/login">
-            <Button>{emailVerifyLocale.t("goToLoginButton")}</Button>
+            <AuthButton>{emailVerifyLocale.t("goToLoginButton")}</AuthButton>
           </Link>
         ))}
 
       {emailVerificationStatus == "error" && (
         <Link href="/register">
-          <Button>{emailVerifyLocale.t("returnToRegisterButton")}</Button>
+          <AuthButton>
+            {emailVerifyLocale.t("returnToRegisterButton")}
+          </AuthButton>
         </Link>
       )}
     </main>

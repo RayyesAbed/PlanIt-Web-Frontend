@@ -5,7 +5,6 @@ import { OrbitControls } from "@react-three/drei";
 import Link from "next/link";
 import RandomLoginModel from "./_components/RandomLoginModel";
 import Logo from "@/app/_components/shared/logo/Logo";
-import { Button } from "@/app/_components/shared/ui/button";
 import { Input } from "@/app/_components/shared/ui/input";
 import loginUser from "./_actions/loginUser";
 import ThemeToggle from "@/app/_components/themeToggle/ThemeToggle";
@@ -17,6 +16,7 @@ import LoginCredentials from "./_types/LoginCredentials";
 import resetPasswordRequest from "./_actions/resetPasswordRequest";
 import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 import SpinnerFeedback from "@/app/_components/shared/ui/spinnerFeedback";
+import AuthButton from "@/app/_components/shared/ui/authButton";
 
 const LoginPageClient = () => {
   const isDesktop = useMediaQuery("(min-width: 1280px)");
@@ -115,9 +115,12 @@ const LoginPageClient = () => {
                   className="w-[300px] font-semibold"
                   required={action === "login"}
                 />
-                <Button onClick={() => setAction("login")} disabled={pending}>
+                <AuthButton
+                  onClick={() => setAction("login")}
+                  disabled={pending}
+                >
                   {loginLocale.t("loginButtonText")}
-                </Button>
+                </AuthButton>
                 <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
                   <button
                     type="submit"
