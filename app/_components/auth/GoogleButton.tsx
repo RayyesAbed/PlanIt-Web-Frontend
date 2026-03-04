@@ -5,12 +5,14 @@ import Image from "next/image";
 const GoogleButton = ({
   buttonAlt,
   ariaLabel,
+  onClick,
 }: {
   buttonAlt: string;
   ariaLabel: string;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (
-    <button aria-label={ariaLabel} className="cursor-pointer">
+    <button aria-label={ariaLabel} className="cursor-pointer" onClick={onClick}>
       <Image
         src={LightGoogleIcon}
         alt={buttonAlt}

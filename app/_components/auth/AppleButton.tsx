@@ -5,12 +5,14 @@ import Image from "next/image";
 const AppleButton = ({
   buttonAlt,
   ariaLabel,
+  onClick,
 }: {
   buttonAlt: string;
   ariaLabel: string;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (
-    <button aria-label={ariaLabel} className="cursor-pointer">
+    <button aria-label={ariaLabel} className="cursor-pointer" onClick={onClick}>
       <Image
         src={LightAppleIcon}
         alt={buttonAlt}
