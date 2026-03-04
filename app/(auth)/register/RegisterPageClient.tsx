@@ -19,6 +19,7 @@ import RegisterCredentials from "./_types/RegisterCredentials";
 import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 import SpinnerFeedback from "@/app/_components/shared/ui/spinnerFeedback";
 import AuthButton from "@/app/_components/shared/ui/authButton";
+import continueWithProvider from "../_actions/continueWithProvider";
 
 const RegisterPageClient = () => {
   const isDesktop = useMediaQuery("(min-width: 1280px)");
@@ -95,10 +96,12 @@ const RegisterPageClient = () => {
               <GoogleButton
                 buttonAlt="Register with Google Icon"
                 ariaLabel="Register with Google"
+                onClick={() => continueWithProvider("google")}
               />
               <AppleButton
                 buttonAlt="Register with Apple Icon"
                 ariaLabel="Register with Apple"
+                onClick={() => continueWithProvider("apple")}
               />
             </section>
             <section className="flex justify-center items-center my-5 w-full">
