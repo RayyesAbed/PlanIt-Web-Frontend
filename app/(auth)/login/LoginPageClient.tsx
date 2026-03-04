@@ -17,6 +17,7 @@ import resetPasswordRequest from "./_actions/resetPasswordRequest";
 import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 import SpinnerFeedback from "@/app/_components/shared/ui/spinnerFeedback";
 import AuthButton from "@/app/_components/shared/ui/authButton";
+import continueWithProvider from "../_actions/continueWithProvider";
 
 const LoginPageClient = () => {
   const isDesktop = useMediaQuery("(min-width: 1280px)");
@@ -78,10 +79,12 @@ const LoginPageClient = () => {
               <GoogleButton
                 buttonAlt="Sign in with Google Icon"
                 ariaLabel="Sign in with Google"
+                onClick={() => continueWithProvider("google")}
               />
               <AppleButton
                 buttonAlt="Sign in with Apple Icon"
                 ariaLabel="Sign in with Apple"
+                onClick={() => continueWithProvider("apple")}
               />
             </section>
             <section className="flex justify-center items-center my-5 w-full">
