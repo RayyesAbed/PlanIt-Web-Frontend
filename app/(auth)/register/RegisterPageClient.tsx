@@ -119,7 +119,7 @@ const RegisterPageClient = () => {
               >
                 <Input
                   type="text"
-                  value={registerCredentials?.name ?? ""}
+                  value={registerCredentials.name}
                   onChange={(event) =>
                     updateRegisterCredentials("name", event.target.value)
                   }
@@ -131,7 +131,7 @@ const RegisterPageClient = () => {
                 />
                 <Input
                   type="email"
-                  value={registerCredentials?.toBeConfirmedEmail ?? ""}
+                  value={registerCredentials.toBeConfirmedEmail}
                   onChange={(event) =>
                     updateRegisterCredentials(
                       "toBeConfirmedEmail",
@@ -143,7 +143,7 @@ const RegisterPageClient = () => {
                   required
                 />
                 <BirthDatePicker
-                  value={registerCredentials?.birthDate ?? ""}
+                  value={registerCredentials.birthDate}
                   onChange={(birthDate) =>
                     updateRegisterCredentials("birthDate", birthDate)
                   }
