@@ -163,9 +163,7 @@ const RegisterPageClient = () => {
                   }
                 />
                 <AuthButton>
-                  {pending
-                    ? "Registering..."
-                    : registerLocale.t("registerButtonText")}
+                  {registerLocale.t("registerButtonText")}
                 </AuthButton>
                 <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
                   <Link href="/login">
