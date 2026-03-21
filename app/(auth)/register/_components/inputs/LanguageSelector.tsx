@@ -24,13 +24,19 @@ const LanguageSelector = ({
         onValueChange={onSelect}
         required
       >
-        <SelectTrigger className="w-full">
+        <SelectTrigger className="w-full" data-testid="language-select">
           <SelectValue placeholder={t("yourLanguage")} />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="en">🇬🇧 {t("english")}</SelectItem>
-          <SelectItem value="de">🇩🇪 {t("german")}</SelectItem>
-          <SelectItem value="ar">🇸🇦 {t("arabic")}</SelectItem>
+          <SelectItem value="en" data-value="en">
+            🇬🇧 {t("english")}
+          </SelectItem>
+          <SelectItem value="de" data-value="de">
+            🇩🇪 {t("german")}
+          </SelectItem>
+          <SelectItem value="ar" data-value="ar">
+            🇸🇦 {t("arabic")}
+          </SelectItem>
         </SelectContent>
       </Select>
     </div>
