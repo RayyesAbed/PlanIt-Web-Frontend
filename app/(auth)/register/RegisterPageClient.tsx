@@ -119,6 +119,7 @@ const RegisterPageClient = () => {
               >
                 <Input
                   type="text"
+                  name="name"
                   value={registerCredentials.name}
                   onChange={(event) =>
                     updateRegisterCredentials("name", event.target.value)
@@ -131,6 +132,7 @@ const RegisterPageClient = () => {
                 />
                 <Input
                   type="email"
+                  name="email"
                   value={registerCredentials.toBeConfirmedEmail}
                   onChange={(event) =>
                     updateRegisterCredentials(
@@ -162,7 +164,7 @@ const RegisterPageClient = () => {
                     updateRegisterCredentials("language", language)
                   }
                 />
-                <AuthButton>
+                <AuthButton type="submit">
                   {registerLocale.t("registerButtonText")}
                 </AuthButton>
                 <section className="flex flex-col gap-5 md:flex-row md:gap-10 underline">
