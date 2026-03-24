@@ -6,6 +6,7 @@ const i18nNamespaces = [
   "EmailVerify",
   "LanguageSelector",
   "PasswordReset",
+  "AuthAccessibility",
 ];
 
 export default i18nNamespaces;
