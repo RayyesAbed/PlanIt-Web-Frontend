@@ -119,6 +119,7 @@ const LoginPageClient = () => {
                   required={action === "login"}
                 />
                 <AuthButton
+                  type="submit"
                   onClick={() => setAction("login")}
                   disabled={pending}
                 >
