@@ -33,6 +33,7 @@ const LoginPageClient = () => {
 
   const formStatusLocale = useTranslation("FormStatus");
   const loginLocale = useTranslation("Login");
+  const authLocale = useTranslation("AuthAccessibility");
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLoginCredentials({ ...loginCredentials, email: event.target.value });
@@ -66,7 +67,10 @@ const LoginPageClient = () => {
     <main className="flex items-center h-screen gap-5 mx-5">
       <section className="flex flex-col items-center flex-1/2 ">
         <ThemeToggle />
-        <Logo />
+        <Logo
+          daytimeAlt={authLocale.t("PlanItDaytimeAlt")}
+          darkAlt={authLocale.t("PlanItDarkAlt")}
+        />
         <h1 className="font-bold text-xl my-5">
           {loginLocale.t("loginHeader")}
         </h1>

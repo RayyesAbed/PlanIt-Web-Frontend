@@ -37,6 +37,7 @@ const RegisterPageClient = () => {
 
   const registerLocale = useTranslation("Register");
   const formStatusMessageLocale = useTranslation("FormStatus");
+  const authLocale = useTranslation("AuthAccessibility");
 
   const updateRegisterCredentials = (
     field: keyof RegisterCredentials,
@@ -81,7 +82,10 @@ const RegisterPageClient = () => {
       )}
       <section className="flex flex-col items-center flex-1/2">
         <ThemeToggle />
-        <Logo />
+        <Logo
+          daytimeAlt={authLocale.t("PlanItDaytimeAlt")}
+          darkAlt={authLocale.t("PlanItDarkAlt")}
+        />
         <h1 className="font-bold text-xl my-5 text-center">
           {registerLocale.t("registerHeader")}
         </h1>
