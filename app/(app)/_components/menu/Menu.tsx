@@ -1,9 +1,31 @@
+"use client";
+import { useTranslation } from "react-i18next";
+import MenuItems from "./MenuItems";
 import ProfileMenuItem from "./ProfileMenuItem";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Menu = () => {
+  const menuItemLocale = useTranslation("MenuItems");
+  const pathName = usePathname();
+
   return (
-    <ul className="bg-[rgba(203,203,203,0.82)] m-10 w-1/5 h-[calc(100vh-80px)] rounded-[45px] relative shadow-2xl">
+    <ul className="m-10 w-1/5 h-[calc(100vh-80px)] rounded-[45px] relative shadow-2xl bg-[rgba(203,203,203,0.82)] dark:bg-[rgba(200,200,200,0.49)]">
       <ProfileMenuItem />
+      <section className="absolute top-20 w-full">
+        {MenuItems.map((menuItem, index) => {
+          return (
+            <Link
+              key={index}
+              href={menuItem.path}
+              className={`font-medium m-4 rounded-[45px] h-16  flex justify-center items-center gap-5 hover:bg-[#242424] hover:text-white dark:hover:bg-[rgba(222,222,222,0.82)] dark:hover:text-[#242424] transition-colors ${pathName.includes(menuItem.path) ? "bg-[#242424] text-white dark:bg-[rgba(222,222,222,0.82)] dark:text-[#242424]" : "bg-white text-[#242424] dark:bg-[rgba(50,50,50,0.82)] dark:text-white"}`}
+            >
+              <span>{menuItem.icon}</span>
+              <span>{menuItemLocale.t(menuItem.locale)}</span>
+            </Link>
+          );
+        })}
+      </section>
     </ul>
   );
 };
