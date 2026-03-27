@@ -7,6 +7,7 @@ const i18nNamespaces = [
   "LanguageSelector",
   "PasswordReset",
   "AuthAccessibility",
+  "MenuItems",
 ];
 
 export default i18nNamespaces;
