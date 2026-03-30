@@ -10,7 +10,7 @@ const Menu = () => {
   const pathName = usePathname();
 
   return (
-    <ul className="m-10 lg:w-1/5 h-20 lg:h-[calc(100vh-80px)] rounded-[45px] relative shadow-2xl bg-[rgba(203,203,203,0.82)] dark:bg-[rgba(200,200,200,0.49)]">
+    <ul className="m-10 lg:w-1/5 h-25 lg:h-[calc(100vh-80px)] rounded-[45px] relative shadow-2xl bg-[rgba(203,203,203,0.82)] dark:bg-[rgba(200,200,200,0.49)]">
       <ProfileMenuItem />
       <section className="absolute lg:top-20 w-full flex lg:block">
         {MenuItems.map((menuItem, index) => {
