@@ -21,7 +21,9 @@ const Menu = () => {
               className={`font-medium m-4 rounded-[45px] h-16  flex justify-center items-center gap-5 hover:bg-[#242424] hover:text-white dark:hover:bg-[rgba(222,222,222,0.82)] dark:hover:text-[#242424] transition-colors ${pathName.includes(menuItem.path) ? "bg-[#242424] text-white dark:bg-[rgba(222,222,222,0.82)] dark:text-[#242424]" : "bg-white text-[#242424] dark:bg-[rgba(50,50,50,0.82)] dark:text-white"}`}
             >
               <span>{menuItem.icon}</span>
-              <span>{menuItemLocale.t(menuItem.locale)}</span>
+              <span className="hidden lg:block">
+                {menuItemLocale.t(menuItem.locale)}
+              </span>
             </Link>
           );
         })}
