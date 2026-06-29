@@ -9,6 +9,11 @@ const TasksPageClient = () => {
       <Menu />
       <section>
         <ThemeToggle />
+        <section>
+          <section>
+            <h1 className="text-[#393838] text-[36px] font-bold">Tasks</h1>
+          </section>
+        </section>
       </section>
     </main>
   );
