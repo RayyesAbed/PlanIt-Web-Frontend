@@ -7,7 +7,7 @@ const TasksPageClient = () => {
   return (
     <main className="flex bg-[#EDEDED]">
       <Menu />
-      <section>
+      <section className="flex-2/3 flex relative">
         <ThemeToggle />
         <section>
           <section>
