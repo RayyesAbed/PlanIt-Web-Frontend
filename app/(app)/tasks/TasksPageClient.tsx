@@ -9,7 +9,7 @@ const TasksPageClient = () => {
       <Menu />
       <section className="flex-2/3 flex relative">
         <ThemeToggle />
-        <section>
+        <section className="bg-white dark:bg-[#5b5b5b] absolute top-16 p-7 w-[97.5%] h-[85%] rounded-[45px]">
           <section>
             <h1 className="text-[#393838] dark:text-white text-[36px] font-bold">
               Tasks
