@@ -5,7 +5,7 @@ import Menu from "../_components/menu/Menu";
 
 const TasksPageClient = () => {
   return (
-    <main className="flex">
+    <main className="flex bg-[#EDEDED]">
       <Menu />
       <section>
         <ThemeToggle />
