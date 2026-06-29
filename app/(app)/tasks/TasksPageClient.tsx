@@ -11,7 +11,7 @@ const TasksPageClient = () => {
       <section className="flex-2/3 flex relative">
         <ThemeToggle />
         <section className="bg-white dark:bg-[#5b5b5b] absolute top-16 p-7 w-[97.5%] h-[85%] rounded-[45px]">
-          <section className="flex">
+          <section className="flex items-center">
             <h1 className="text-[#393838] dark:text-white text-[36px] font-bold">
               Tasks
             </h1>
