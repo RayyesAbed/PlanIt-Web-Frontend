@@ -1,10 +1,14 @@
+const TaskNavigationItem = ({ text }: { text: string }) => {
+  return <li className="flex-1/4">{text}</li>;
+};
+
 const TasksNavigation = () => {
   return (
-    <ul className="flex">
-      <li className="flex-1/4">Today</li>
-      <li className="flex-1/4">Upcoming</li>
-      <li className="flex-1/4">Completed</li>
-      <li className="flex-1/4">Overdue</li>
+    <ul className="flex justify-center">
+      <TaskNavigationItem text="Today" />
+      <TaskNavigationItem text="Upcoming" />
+      <TaskNavigationItem text="Completed" />
+      <TaskNavigationItem text="Overdue" />
     </ul>
   );
 };
