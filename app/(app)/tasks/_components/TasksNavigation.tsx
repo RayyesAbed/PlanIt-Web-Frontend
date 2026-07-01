@@ -17,7 +17,7 @@ const TaskNavigationItem = ({ text, href }: { text: string; href: string }) => {
 const TasksNavigation = () => {
   return (
     <ul className="flex justify-center">
-      <TaskNavigationItem text="Today" href="#" />
+      <TaskNavigationItem text="Today" href="/tasks" />
       <TaskNavigationItem text="Upcoming" href="#" />
       <TaskNavigationItem text="Completed" href="#" />
       <TaskNavigationItem text="Overdue" href="#" />
