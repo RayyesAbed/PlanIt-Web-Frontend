@@ -7,6 +7,7 @@ import TranslationsProvider from "./_providers/translation/TranslationsProvider"
 import initTranslations from "./i18n";
 import i18nNamespaces from "@/i18nNamespaces";
 import detectDeviceLocale from "@/lib/detectDeviceLocale";
+import { ApolloProvider } from "./_providers/apollo/ApolloProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,19 +40,21 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <TranslationsProvider
-          locale={locale}
-          namespaces={i18nNamespaces}
-          resources={resources}
-        >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem={true}
+        <ApolloProvider>
+          <TranslationsProvider
+            locale={locale}
+            namespaces={i18nNamespaces}
+            resources={resources}
           >
-            {children}
-          </ThemeProvider>
-        </TranslationsProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="light"
+              enableSystem={true}
+            >
+              {children}
+            </ThemeProvider>
+          </TranslationsProvider>
+        </ApolloProvider>
       </body>
     </html>
   );
