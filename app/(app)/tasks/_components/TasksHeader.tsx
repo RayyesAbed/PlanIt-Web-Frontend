@@ -1,4 +1,5 @@
 import { CirclePlus } from "lucide-react";
+import TasksNavigation from "./TasksNavigation";
 
 const TasksHeader = () => {
   return (
@@ -15,6 +16,7 @@ const TasksHeader = () => {
 
         <CirclePlus size={40} color="#000000" className="cursor-pointer" />
       </section>
+      <TasksNavigation />
     </section>
   );
 };
