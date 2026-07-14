@@ -8,6 +8,13 @@ export const GET_USER_DATA = gql`
       birthDate
       preferredLanguage
       points
+      picture
+      subscription {
+        name
+        features
+        price
+        currency
+      }
     }
   }
 `;
