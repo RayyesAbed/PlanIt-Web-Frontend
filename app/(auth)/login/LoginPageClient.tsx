@@ -18,8 +18,10 @@ import useAsyncFormAction from "@/app/_hooks/useAsyncFormAction";
 import SpinnerFeedback from "@/app/_components/shared/ui/spinnerFeedback";
 import AuthButton from "@/app/_components/shared/ui/authButton";
 import continueWithProvider from "../_actions/continueWithProvider";
+import { useRouter } from "next/navigation";
 
 const LoginPageClient = () => {
+  const router = useRouter();
   const isDesktop = useMediaQuery("(min-width: 1280px)");
   const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({
     email: "",
@@ -50,6 +52,8 @@ const LoginPageClient = () => {
       if (action === "login") {
         const response = await run(() => loginUser(loginCredentials));
         setResponseData(formStatusLocale.t(response));
+
+        router.push("/tasks");
       } else {
         const response = await run(() =>
           resetPasswordRequest(loginCredentials.email),
