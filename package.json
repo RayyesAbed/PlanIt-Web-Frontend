@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@apollo/client": "^4.2.6",
+    "@apollo/client": "^4.2.12",
     "@apollo/client-integration-nextjs": "^0.14.5",
     "@radix-ui/react-alert-dialog": "^1.1.14",
     "@radix-ui/react-label": "^2.1.7",
