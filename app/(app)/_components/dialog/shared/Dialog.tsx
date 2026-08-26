@@ -19,7 +19,7 @@ const Dialog = ({
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="bg-[#3b3a3a] dark:bg-white absolute top-16 left-[25%] p-7 h-[85%] w-[73%] rounded-[45px]"
+          className="bg-[#3b3a3a] dark:bg-white absolute top-16 left-[2.5%] lg:left-[25%] p-7 h-[70%] lg:h-[85%] w-[95%] lg:w-[73%] rounded-[45px]"
           ref={ref}
           onClick={(e) => {
             if (e.target === e.currentTarget) {
