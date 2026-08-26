@@ -26,6 +26,7 @@ const Dialog = ({
               setIsOpen(false);
             }
           }}
+          onCancel={() => setIsOpen(false)}
         >
           {children}
         </motion.dialog>
