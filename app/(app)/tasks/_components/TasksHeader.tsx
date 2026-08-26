@@ -21,12 +21,12 @@ const TasksHeader = () => {
         DUMMY TEXT
       </Dialog>
       <section className="flex items-center">
-        <h1 className="text-[#393838] dark:text-white text-[36px] font-bold">
+        <h1 className="hidden lg:block text-[#393838] dark:text-white text-[36px] font-bold">
           Tasks
         </h1>
 
         <input
-          className="bg-[#3E3E3E] text-white px-5 py-2 flex-1/3 rounded-[45px] font-semibold mx-24"
+          className="bg-[#3E3E3E] text-white px-5 py-2 flex-1/3 rounded-[45px] font-semibold mr-5 lg:mx-24"
           placeholder="Search for a task..."
         />
 
