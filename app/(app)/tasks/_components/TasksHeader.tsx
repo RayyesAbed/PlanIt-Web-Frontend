@@ -16,7 +16,7 @@ const TasksHeader = () => {
   }, [isDialogOpen]);
 
   return (
-    <section className="bg-white dark:bg-[#5b5b5b] absolute top-16 p-7 w-[97.5%] h-[85%] rounded-[45px] shadow-xl">
+    <section className="bg-white dark:bg-[#5b5b5b] absolute top-16 p-7 w-[95%] lg:w-[97.5%] ml-[2.5%] lg:ml-0 h-[85%] rounded-[45px] shadow-xl">
       <Dialog ref={dialogRef} isOpen={isDialogOpen} setIsOpen={setIsDialogOpen}>
         DUMMY TEXT
       </Dialog>
