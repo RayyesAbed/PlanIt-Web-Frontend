@@ -28,7 +28,9 @@ const Dialog = ({
           }}
           onCancel={() => setIsOpen(false)}
         >
-          {children}
+          <div className="w-full h-full" onClick={(e) => e.stopPropagation()}>
+            {children}
+          </div>
         </motion.dialog>
       )}
     </AnimatePresence>
