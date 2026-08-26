@@ -11,7 +11,7 @@ const TasksPageClient = () => {
       initial={{ y: "-100%" }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="flex bg-[#EDEDED] dark:bg-[#393838]"
+      className="h-dvh flex flex-col-reverse lg:flex-row bg-[#EDEDED] dark:bg-[#393838]"
     >
       <Menu />
       <section className="flex-2/3 flex relative">
