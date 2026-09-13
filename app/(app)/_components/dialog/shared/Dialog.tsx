@@ -45,7 +45,7 @@ const Dialog = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.15 }}
-            className="relative z-50 bg-white dark:bg-[#3b3a3a] top-0 left-0 p-7 h-[70%] lg:h-[70%] w-[95%] lg:w-[35%] rounded-[45px] shadow-xl"
+            className="relative z-50 bg-white dark:bg-[#3b3a3a] top-0 left-0 p-7 h-[70%] lg:h-[70%] w-[95%] lg:w-[35%] rounded-[45px] shadow-xl overflow-scroll"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="w-full h-full">{children}</div>
