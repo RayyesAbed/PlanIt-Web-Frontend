@@ -1,5 +1,7 @@
 {
   "addTask": "Add Task",
+  "add": "Add",
+  "cancel": "Cancel",
   "taskName": "Task name",
   "taskNamePlaceholder": "What needs to be done",
   "description": "Description",
