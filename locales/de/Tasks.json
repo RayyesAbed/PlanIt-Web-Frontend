@@ -1,0 +1,14 @@
+{
+  "addTask": "Aufgabe hinzufügen",
+  "taskName": "Aufgabenname",
+  "taskNamePlaceholder": "Was muss erledigt werden",
+  "description": "Beschreibung",
+  "descriptionPlaceholder": "Füge weitere Details oder Kontext hinzu...",
+  "dueDate": "Fälligkeitsdatum",
+  "priority": "Priorität",
+  "someday": "Irgendwann",
+  "focus": "Fokus",
+  "asap": "SOFORT!",
+  "tasksHeader": "Aufgaben",
+  "searchForTaskPlaceholder": "Nach einer Aufgabe suchen..."
+}
