@@ -1,0 +1,14 @@
+{
+  "addTask": "إضافة مهمة",
+  "taskName": "اسم المهمة",
+  "taskNamePlaceholder": "ما الذي يحتاج إلى إنجازه",
+  "description": "الوصف",
+  "descriptionPlaceholder": "أضف تفاصيل أو سياقًا إضافيًا...",
+  "dueDate": "تاريخ الاستحقاق",
+  "priority": "الأولوية",
+  "someday": "في يوم ما",
+  "focus": "تركيز",
+  "asap": "عاجل!",
+  "tasksHeader": "المهام",
+  "searchForTaskPlaceholder": "ابحث عن مهمة..."
+}
