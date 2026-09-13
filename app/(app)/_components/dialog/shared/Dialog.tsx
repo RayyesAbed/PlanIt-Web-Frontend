@@ -1,37 +1,40 @@
-import { Dispatch, ReactNode, RefObject, SetStateAction } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Dialog = ({
   children,
   isOpen,
   setIsOpen,
-  ref,
 }: {
   children: ReactNode;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  ref: RefObject<HTMLDialogElement | null>;
 }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.dialog
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          className="bg-white dark:bg-[#3b3a3a] absolute top-20 left-[2.5%] lg:left-[30%] p-7 h-[70%] lg:h-[70%] w-[95%] lg:w-[35%] rounded-[45px]"
-          ref={ref}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-40 flex items-center justify-center bg-black/20 p-4"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
               setIsOpen(false);
             }
           }}
-          onCancel={() => setIsOpen(false)}
         >
-          <div className="w-full h-full" onClick={(e) => e.stopPropagation()}>
-            {children}
-          </div>
-        </motion.dialog>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.15 }}
+            className="relative z-50 bg-white dark:bg-[#3b3a3a] top-0 left-0 p-7 h-[70%] lg:h-[70%] w-[95%] lg:w-[35%] rounded-[45px] shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="w-full h-full">{children}</div>
+          </motion.div>
+        </motion.div>
       )}
     </AnimatePresence>
   );
