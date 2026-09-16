@@ -8,9 +8,17 @@ import {
 } from "@/app/_components/shared/ui/field";
 import { Input } from "@/app/_components/shared/ui/input";
 import { Textarea } from "@/app/_components/shared/ui/textarea";
+import { Task } from "@/app/_types/App";
+import { Dispatch, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
 
-const TaskDialog = () => {
+const TaskDialog = ({
+  currentTask,
+  setCurrentTask,
+}: {
+  currentTask: Task;
+  setCurrentTask: Dispatch<SetStateAction<Task>>;
+}) => {
   const taskLocale = useTranslation("Tasks");
 
   return (
@@ -27,6 +35,10 @@ const TaskDialog = () => {
             className="bg-[#F2F2F2] border-0"
             id="fieldgroup-name"
             placeholder={taskLocale.t("taskNamePlaceholder")}
+            value={currentTask.name}
+            onChange={(event) =>
+              setCurrentTask({ ...currentTask, name: event.target.value })
+            }
           />
         </Field>
         <Field>
@@ -37,6 +49,13 @@ const TaskDialog = () => {
             className="bg-[#F2F2F2] border-0"
             id="fieldgroup-description"
             placeholder={taskLocale.t("descriptionPlaceholder")}
+            value={currentTask.description}
+            onChange={(event) =>
+              setCurrentTask({
+                ...currentTask,
+                description: event.target.value,
+              })
+            }
           />
         </Field>
         <Field>
@@ -46,13 +65,28 @@ const TaskDialog = () => {
         <Field>
           <FieldLabel>{taskLocale.t("priority")}</FieldLabel>
           <section className="flex gap-10 text-center items-center">
-            <div className="flex-1/3 bg-[#F2F2F2] rounded-[45px] py-2 px-6 font-semibold cursor-pointer">
+            <div
+              className="flex-1/3 bg-[#F2F2F2] rounded-[45px] py-2 px-6 font-semibold cursor-pointer"
+              onClick={() =>
+                setCurrentTask({ ...currentTask, priority: "someday" })
+              }
+            >
               {taskLocale.t("someday")}
             </div>
-            <div className="flex-1/3 bg-[#F2F2F2] rounded-[45px] py-2 px-6 font-semibold cursor-pointer">
+            <div
+              className="flex-1/3 bg-[#F2F2F2] rounded-[45px] py-2 px-6 font-semibold cursor-pointer"
+              onClick={() =>
+                setCurrentTask({ ...currentTask, priority: "focus" })
+              }
+            >
               {taskLocale.t("focus")}
             </div>
-            <div className="flex-1/3 bg-[#F2F2F2] rounded-[45px] py-2 px-6 font-semibold cursor-pointer">
+            <div
+              className="flex-1/3 bg-[#F2F2F2] rounded-[45px] py-2 px-6 font-semibold cursor-pointer"
+              onClick={() =>
+                setCurrentTask({ ...currentTask, priority: "asap" })
+              }
+            >
               {taskLocale.t("asap")}
             </div>
           </section>
