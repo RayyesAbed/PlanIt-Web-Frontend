@@ -92,10 +92,10 @@ const TaskDialog = ({
           </section>
         </Field>
         <section className="flex gap-10 mb-5">
-          <Button className="flex-1/2 cursor-pointer active:scale-97">
+          <Button className="flex-1/2 cursor-pointer active:scale-97 rounded-[45px] py-6 text-[16px]">
             {taskLocale.t("add")}
           </Button>
-          <Button className="flex-1/2 bg-red-800 hover:bg-red-900 cursor-pointer active:scale-97">
+          <Button className="flex-1/2 bg-[#EAEAEA] hover:bg-[#dedcdc] text-[#3E3E3E] cursor-pointer active:scale-97 rounded-[45px] py-6 text-[16px]">
             {taskLocale.t("cancel")}
           </Button>
         </section>
