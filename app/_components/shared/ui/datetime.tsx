@@ -9,9 +9,15 @@ import { Button } from "./button";
 import { Calendar } from "./calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { ScrollArea, ScrollBar } from "./scroll-area";
+import { Task } from "@/app/_types/App";
 
-export function DateTimePicker() {
-  const [date, setDate] = React.useState<Date>();
+export function DateTimePicker({
+  date,
+  setDate,
+}: {
+  date: Date;
+  setDate: React.Dispatch<React.SetStateAction<Task>>;
+}) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   console.log(date);
@@ -19,7 +25,9 @@ export function DateTimePicker() {
   const hours = Array.from({ length: 12 }, (_, i) => i + 1);
   const handleDateSelect = (selectedDate: Date | undefined) => {
     if (selectedDate) {
-      setDate(selectedDate);
+      setDate((prevState) => {
+        return { ...prevState, dueDate: selectedDate };
+      });
     }
   };
 
@@ -41,7 +49,9 @@ export function DateTimePicker() {
           value === "PM" ? currentHours + 12 : currentHours - 12,
         );
       }
-      setDate(newDate);
+      setDate((prevState) => {
+        return { ...prevState, dueDate: newDate };
+      });
     }
   };
 
