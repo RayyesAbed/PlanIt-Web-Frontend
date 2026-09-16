@@ -60,7 +60,7 @@ const TaskDialog = ({
         </Field>
         <Field>
           <FieldLabel>{taskLocale.t("dueDate")}</FieldLabel>
-          <DateTimePicker />
+          <DateTimePicker date={currentTask.dueDate} setDate={setCurrentTask} />
         </Field>
         <Field>
           <FieldLabel>{taskLocale.t("priority")}</FieldLabel>
