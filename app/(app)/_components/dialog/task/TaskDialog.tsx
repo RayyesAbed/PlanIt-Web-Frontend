@@ -7,8 +7,11 @@ import {
   FieldLabel,
 } from "@/app/_components/shared/ui/field";
 import { Input } from "@/app/_components/shared/ui/input";
+import { Spinner } from "@/app/_components/shared/ui/spinner";
 import { Textarea } from "@/app/_components/shared/ui/textarea";
+import { ADD_TASK } from "@/app/_graphql/typeDefs";
 import { Task } from "@/app/_types/App";
+import { useMutation } from "@apollo/client/react";
 import { Dispatch, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -20,6 +23,25 @@ const TaskDialog = ({
   setCurrentTask: Dispatch<SetStateAction<Task>>;
 }) => {
   const taskLocale = useTranslation("Tasks");
+
+  const [addTask, { loading }] = useMutation<Task>(ADD_TASK);
+
+  const handleAddTask = (event: React.MouseEvent) => {
+    event.preventDefault();
+
+    addTask({
+      variables: {
+        data: currentTask,
+      },
+    });
+
+    setCurrentTask({
+      name: "",
+      description: "",
+      dueDate: new Date(),
+      priority: "someday",
+    });
+  };
 
   return (
     <>
@@ -92,8 +114,11 @@ const TaskDialog = ({
           </section>
         </Field>
         <section className="flex gap-10 mb-5">
-          <Button className="flex-1/2 cursor-pointer active:scale-97 rounded-[45px] py-6 text-[16px]">
-            {taskLocale.t("add")}
+          <Button
+            className="flex-1/2 cursor-pointer active:scale-97 rounded-[45px] py-6 text-[16px]"
+            onClick={handleAddTask}
+          >
+            {loading ? <Spinner className="size-6" /> : taskLocale.t("add")}
           </Button>
           <Button className="flex-1/2 bg-[#EAEAEA] hover:bg-[#dedcdc] text-[#3E3E3E] cursor-pointer active:scale-97 rounded-[45px] py-6 text-[16px]">
             {taskLocale.t("cancel")}
