@@ -18,3 +18,14 @@ export const GET_USER_DATA = gql`
     }
   }
 `;
+
+export const ADD_TASK = gql`
+  mutation ($data: TaskInput) {
+    addTask(input: $data) {
+      name
+      description
+      dueDate
+      priority
+    }
+  }
+`;
