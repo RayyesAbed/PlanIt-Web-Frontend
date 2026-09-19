@@ -4,6 +4,8 @@ import { useState } from "react";
 import Dialog from "../../_components/dialog/shared/Dialog";
 import TaskDialog from "../../_components/dialog/task/TaskDialog";
 import { Task } from "@/app/_types/App";
+import { useQuery } from "@apollo/client/react";
+import { GET_USER_TASKS } from "@/app/_graphql/typeDefs";
 
 const TasksHeader = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -13,6 +15,8 @@ const TasksHeader = () => {
     dueDate: new Date(),
     priority: "someday",
   });
+
+  const { data } = useQuery(GET_USER_TASKS);
 
   return (
     <section className="bg-white dark:bg-[#5b5b5b] absolute top-16 p-7 w-[95%] lg:w-[97.5%] ml-[2.5%] lg:ml-0 h-[85%] rounded-[45px] shadow-xl">
