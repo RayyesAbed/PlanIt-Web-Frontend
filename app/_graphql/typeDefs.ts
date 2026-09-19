@@ -29,3 +29,16 @@ export const ADD_TASK = gql`
     }
   }
 `;
+
+export const GET_USER_TASKS = gql`
+  query {
+    getUserTasks {
+      _id
+      name
+      description
+      dueDate
+      isCompleted
+      isDue
+    }
+  }
+`;
