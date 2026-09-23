@@ -39,7 +39,7 @@ const TaskDialog = ({
       name: "",
       description: "",
       dueDate: new Date(),
-      priority: "someday",
+      priority: "Someday",
       isCompleted: false,
       isDue: false,
     });
@@ -92,7 +92,7 @@ const TaskDialog = ({
             <div
               className="flex-1/3 bg-[#F2F2F2] rounded-[45px] py-2 px-6 font-semibold cursor-pointer"
               onClick={() =>
-                setCurrentTask({ ...currentTask, priority: "someday" })
+                setCurrentTask({ ...currentTask, priority: "Someday" })
               }
             >
               {taskLocale.t("someday")}
@@ -100,7 +100,7 @@ const TaskDialog = ({
             <div
               className="flex-1/3 bg-[#F2F2F2] rounded-[45px] py-2 px-6 font-semibold cursor-pointer"
               onClick={() =>
-                setCurrentTask({ ...currentTask, priority: "focus" })
+                setCurrentTask({ ...currentTask, priority: "Focus" })
               }
             >
               {taskLocale.t("focus")}
@@ -108,7 +108,7 @@ const TaskDialog = ({
             <div
               className="flex-1/3 bg-[#F2F2F2] rounded-[45px] py-2 px-6 font-semibold cursor-pointer"
               onClick={() =>
-                setCurrentTask({ ...currentTask, priority: "asap" })
+                setCurrentTask({ ...currentTask, priority: "Asap!" })
               }
             >
               {taskLocale.t("asap")}
