@@ -2,7 +2,7 @@ export type Task = {
   name: string;
   description: string;
   dueDate: Date;
-  priority: "someday" | "focus" | "asap";
+  priority: "Someday" | "Focus" | "Asap!";
   isCompleted: boolean;
   isDue: boolean;
 };
