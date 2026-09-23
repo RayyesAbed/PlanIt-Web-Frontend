@@ -1,4 +1,5 @@
 import { Task } from "@/app/_types/App";
+import formatTime from "@/app/_utils/formatTime";
 import { Bike, ChevronDown, CircleX, Pencil } from "lucide-react";
 
 const TaskComponent = ({ task }: { task: Task }) => {
@@ -10,7 +11,7 @@ const TaskComponent = ({ task }: { task: Task }) => {
       <div className="flex-[40%] font-semibold">{task.name}</div>
       <div className="flex flex-[1%] gap-5 text-center items-center">
         <div className="bg-[#F3F4F6] rounded-[45px] px-5 py-1 font-semibold">
-          22:00
+          {formatTime(task.dueDate)}
         </div>
         <div className="bg-[#BFDBFE] text-[#1E40AF] rounded-[45px] px-5 py-1 font-semibold">
           FOCUS
