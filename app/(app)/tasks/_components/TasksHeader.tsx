@@ -14,7 +14,7 @@ const TasksHeader = () => {
     name: "",
     description: "",
     dueDate: new Date(),
-    priority: "someday",
+    priority: "Someday",
     isCompleted: false,
     isDue: false,
   });
