@@ -14,6 +14,8 @@ const TasksHeader = () => {
     description: "",
     dueDate: new Date(),
     priority: "someday",
+    isCompleted: false,
+    isDue: false,
   });
 
   const { data } = useQuery(GET_USER_TASKS);
