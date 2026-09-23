@@ -37,6 +37,7 @@ export const GET_USER_TASKS = gql`
       name
       description
       dueDate
+      priority
       isCompleted
       isDue
     }
