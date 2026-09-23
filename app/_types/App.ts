@@ -6,3 +6,7 @@ export type Task = {
   isCompleted: boolean;
   isDue: boolean;
 };
+
+export type FetchedTasks = {
+  getUserTasks: [Task];
+};
