@@ -17,7 +17,7 @@ const TaskComponent = ({ task }: { task: Task }) => {
           {formatTime(task.dueDate)}
         </div>
         <div className="bg-[#BFDBFE] text-[#1E40AF] rounded-[45px] px-5 py-1 font-semibold">
-          FOCUS
+          {task.priority}
         </div>
         <div className="bg-[#BBF7D0] text-[#166534] rounded-[45px] px-5 py-1 font-semibold">
           +50XP
