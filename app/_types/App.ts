@@ -3,4 +3,6 @@ export type Task = {
   description: string;
   dueDate: Date;
   priority: "someday" | "focus" | "asap";
+  isCompleted: boolean;
+  isDue: boolean;
 };
