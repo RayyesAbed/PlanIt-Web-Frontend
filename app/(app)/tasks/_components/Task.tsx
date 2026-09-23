@@ -1,12 +1,15 @@
 import { Task } from "@/app/_types/App";
 import formatTime from "@/app/_utils/formatTime";
 import { Bike, ChevronDown, CircleX, Pencil } from "lucide-react";
+import mapTaskToIcon from "../_utils/mapTaskToIcon";
 
 const TaskComponent = ({ task }: { task: Task }) => {
+  const TaskIcon = mapTaskToIcon(task.name);
+
   return (
     <div className="bg-[#ececec] w-[100%] flex rounded-[45px] p-7 items-center gap-6 mt-5">
       <div className="bg-[#7A0000] rounded-2xl p-3 active:scale-97 cursor-pointer text-white">
-        <Bike />
+        <TaskIcon />
       </div>
       <div className="flex-[40%] font-semibold">{task.name}</div>
       <div className="flex flex-[1%] gap-5 text-center items-center">
