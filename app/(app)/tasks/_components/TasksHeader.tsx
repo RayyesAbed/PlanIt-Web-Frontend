@@ -7,6 +7,8 @@ import { FetchedTasks, Task } from "@/app/_types/App";
 import { useQuery } from "@apollo/client/react";
 import { GET_USER_TASKS } from "@/app/_graphql/typeDefs";
 import TaskComponent from "./Task";
+import { useSearchParams } from "next/navigation";
+import filterTasksOnNavigation from "../_utils/filterTasksOnNavigation";
 
 const TasksHeader = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -18,6 +20,8 @@ const TasksHeader = () => {
     isCompleted: false,
     isDue: false,
   });
+
+  const searchParams = useSearchParams();
 
   const { data } = useQuery<FetchedTasks>(GET_USER_TASKS);
 
@@ -44,9 +48,11 @@ const TasksHeader = () => {
         />
       </section>
       <TasksNavigation />
-      {data?.getUserTasks.map((task, index) => (
-        <TaskComponent key={index} task={task} />
-      ))}
+      {data?.getUserTasks
+        .filter((task) => filterTasksOnNavigation(task, searchParams))
+        .map((task, index) => (
+          <TaskComponent key={index} task={task} />
+        ))}
     </section>
   );
 };
