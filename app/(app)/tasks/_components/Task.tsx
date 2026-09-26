@@ -2,6 +2,7 @@ import { Task } from "@/app/_types/App";
 import formatTime from "@/app/_utils/formatTime";
 import { Bike, ChevronDown, CircleX, Pencil } from "lucide-react";
 import mapTaskToIcon from "../_utils/mapTaskToIcon";
+import colorTaskPriorityPill from "../_utils/colorTaskPriorityPill";
 
 const TaskComponent = ({ task }: { task: Task }) => {
   const TaskIcon = mapTaskToIcon(task.name);
@@ -16,7 +17,9 @@ const TaskComponent = ({ task }: { task: Task }) => {
         <div className="bg-[#F3F4F6] rounded-[45px] px-5 py-1 font-semibold">
           {formatTime(task.dueDate)}
         </div>
-        <div className="bg-[#BFDBFE] text-[#1E40AF] rounded-[45px] px-5 py-1 font-semibold">
+        <div
+          className={`rounded-[45px] w-28 py-1 font-semibold ${colorTaskPriorityPill(task.priority)}`}
+        >
           {task.priority}
         </div>
         <div className="bg-[#BBF7D0] text-[#166534] rounded-[45px] px-5 py-1 font-semibold">
