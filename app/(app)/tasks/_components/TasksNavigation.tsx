@@ -1,9 +1,6 @@
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const TaskNavigationItem = ({ text, href }: { text: string; href: string }) => {
-  const pathname = usePathname();
-
   return (
     <Link
       href={href}
