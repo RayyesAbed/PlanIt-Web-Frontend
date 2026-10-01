@@ -38,6 +38,7 @@ export const GET_USER_TASKS = gql`
       description
       dueDate
       priority
+      points
       isCompleted
       isDue
     }
