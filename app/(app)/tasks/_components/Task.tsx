@@ -3,6 +3,7 @@ import formatTime from "@/app/_utils/formatTime";
 import { Bike, ChevronDown, CircleX, Pencil } from "lucide-react";
 import mapTaskToIcon from "../_utils/mapTaskToIcon";
 import colorTaskPriorityPill from "../_utils/colorTaskPriorityPill";
+import colorTaskPointsPill from "../_utils/colorTaskPointsPill";
 
 const TaskComponent = ({ task }: { task: Task }) => {
   const TaskIcon = mapTaskToIcon(task.name);
@@ -22,8 +23,11 @@ const TaskComponent = ({ task }: { task: Task }) => {
         >
           {task.priority}
         </div>
-        <div className="bg-[#BBF7D0] text-[#166534] rounded-[45px] px-5 py-1 font-semibold">
-          +50XP
+        <div
+          className={`rounded-[45px] px-5 py-1 font-semibold ${colorTaskPointsPill(task.isCompleted, task.isDue)}`}
+        >
+          {!task.isCompleted && task.isDue ? "-" : "+"}
+          {task.points}XPs
         </div>
       </div>
       <div className="flex flex-[10%] gap-5">
