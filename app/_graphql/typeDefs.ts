@@ -55,3 +55,14 @@ export const COMPLETE_TASK = gql`
     }
   }
 `;
+
+export const DELETE_TASK = gql`
+  mutation ($data: TaskInput) {
+    deleteTask(input: $data) {
+      name
+      description
+      dueDate
+      priority
+    }
+  }
+`;
