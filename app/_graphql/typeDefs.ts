@@ -44,3 +44,14 @@ export const GET_USER_TASKS = gql`
     }
   }
 `;
+
+export const COMPLETE_TASK = gql`
+  mutation ($data: TaskInput) {
+    completeTask(input: $data) {
+      name
+      description
+      dueDate
+      priority
+    }
+  }
+`;
