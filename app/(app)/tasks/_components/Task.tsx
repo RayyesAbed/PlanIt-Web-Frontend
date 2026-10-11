@@ -7,6 +7,7 @@ import colorTaskPriorityPill from "../_utils/colorTaskPriorityPill";
 import colorTaskPointsPill from "../_utils/colorTaskPointsPill";
 import { useMutation } from "@apollo/client/react";
 import { COMPLETE_TASK } from "@/app/_graphql/typeDefs";
+import colorTaskIcon from "../_utils/colorTaskIcon";
 
 const TaskComponent = ({ task }: { task: Task }) => {
   const TaskIcon = mapTaskToIcon(task.name);
@@ -35,7 +36,7 @@ const TaskComponent = ({ task }: { task: Task }) => {
   return (
     <div className="bg-[#ececec] w-[100%] flex rounded-[45px] p-7 items-center gap-6 mt-5">
       <div
-        className="bg-[#7A0000] rounded-2xl p-3 active:scale-97 cursor-pointer text-white"
+        className={`${colorTaskIcon(task.isCompleted)} rounded-2xl p-3 active:scale-97 cursor-pointer text-white`}
         onClick={handleCompleteTask}
       >
         {loading ? <Spinner className="size-6" /> : <TaskIcon />}
