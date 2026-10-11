@@ -17,7 +17,7 @@ import { useState } from "react";
 const TaskComponent = ({ task }: { task: Task }) => {
   const TaskIcon = mapTaskToIcon(task.name);
 
-  const [isChevronDown, setIsChevronDown] = useState(false);
+  const [isChevronUp, setIsChevronUp] = useState(false);
 
   const [completeTask, { loading }] = useMutation<Task>(COMPLETE_TASK, {
     refetchQueries: [{ query: GET_USER_TASKS }],
@@ -55,7 +55,7 @@ const TaskComponent = ({ task }: { task: Task }) => {
 
   return (
     <div
-      className={`bg-[#ececec] w-[100%] rounded-[45px] p-7 items-center gap-6 mt-5 task ${isChevronDown ? "pb-20" : ""}`}
+      className={`bg-[#ececec] w-[100%] rounded-[45px] p-7 items-center gap-6 mt-5 task ${isChevronUp ? "pb-20" : ""}`}
     >
       <div className="flex w-[100%] items-center gap-6">
         <div
@@ -93,16 +93,16 @@ const TaskComponent = ({ task }: { task: Task }) => {
           </div>
           <div
             className="bg-white hover:bg-[#3a3a3a] text-[#3a3a3a] hover:text-white p-1.5 rounded-2xl transition-colors cursor-pointer"
-            onClick={() => setIsChevronDown((prevState) => !prevState)}
+            onClick={() => setIsChevronUp((prevState) => !prevState)}
           >
             <ChevronDown
-              className={`transition-transform duration-300 ease-in-out ${isChevronDown ? "rotate-0" : "rotate-180"}`}
+              className={`transition-transform duration-300 ease-in-out ${isChevronUp ? "rotate-0" : "rotate-180"}`}
             />
           </div>
         </div>
       </div>
-      <div className={`${isChevronDown && "mt-5"}`}>
-        {isChevronDown && task.description}
+      <div className={`${isChevronUp && "mt-5"}`}>
+        {isChevronUp && task.description}
       </div>
     </div>
   );
