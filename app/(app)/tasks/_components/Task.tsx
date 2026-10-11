@@ -1,6 +1,6 @@
 import { Task } from "@/app/_types/App";
 import formatTime from "@/app/_utils/formatTime";
-import { Bike, ChevronDown, ChevronUp, CircleX, Pencil } from "lucide-react";
+import { ChevronDown, CircleX, Pencil } from "lucide-react";
 import { Spinner } from "@/app/_components/shared/ui/spinner";
 import mapTaskToIcon from "../_utils/mapTaskToIcon";
 import colorTaskPriorityPill from "../_utils/colorTaskPriorityPill";
