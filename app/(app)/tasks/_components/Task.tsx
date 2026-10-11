@@ -6,13 +6,20 @@ import mapTaskToIcon from "../_utils/mapTaskToIcon";
 import colorTaskPriorityPill from "../_utils/colorTaskPriorityPill";
 import colorTaskPointsPill from "../_utils/colorTaskPointsPill";
 import { useMutation } from "@apollo/client/react";
-import { COMPLETE_TASK } from "@/app/_graphql/typeDefs";
+import {
+  COMPLETE_TASK,
+  DELETE_TASK,
+  GET_USER_TASKS,
+} from "@/app/_graphql/typeDefs";
 import colorTaskIcon from "../_utils/colorTaskIcon";
 
 const TaskComponent = ({ task }: { task: Task }) => {
   const TaskIcon = mapTaskToIcon(task.name);
 
   const [completeTask, { loading }] = useMutation<Task>(COMPLETE_TASK);
+  const [deleteTask] = useMutation<Task>(DELETE_TASK, {
+    refetchQueries: [{ query: GET_USER_TASKS }],
+  });
 
   const sanitizedTask = {
     _id: task._id,
@@ -27,6 +34,14 @@ const TaskComponent = ({ task }: { task: Task }) => {
 
   const handleCompleteTask = () => {
     completeTask({
+      variables: {
+        data: sanitizedTask,
+      },
+    });
+  };
+
+  const handleDeleteTask = () => {
+    deleteTask({
       variables: {
         data: sanitizedTask,
       },
@@ -62,7 +77,10 @@ const TaskComponent = ({ task }: { task: Task }) => {
         <div className="bg-white hover:bg-[#8e8706] text-[#8e8706] hover:text-white p-1.5 rounded-2xl transition-colors cursor-pointer">
           <Pencil />
         </div>
-        <div className="bg-white hover:bg-[#7A0000] text-[#7A0000] hover:text-white p-1.5 rounded-2xl transition-colors cursor-pointer">
+        <div
+          className="bg-white hover:bg-[#7A0000] text-[#7A0000] hover:text-white p-1.5 rounded-2xl transition-colors cursor-pointer"
+          onClick={handleDeleteTask}
+        >
           <CircleX />
         </div>
         <div className="bg-white hover:bg-[#3a3a3a] text-[#3a3a3a] hover:text-white p-1.5 rounded-2xl transition-colors cursor-pointer">
