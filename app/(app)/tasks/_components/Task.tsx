@@ -1,6 +1,6 @@
 import { Task } from "@/app/_types/App";
 import formatTime from "@/app/_utils/formatTime";
-import { Bike, ChevronDown, CircleX, Pencil } from "lucide-react";
+import { Bike, ChevronDown, ChevronUp, CircleX, Pencil } from "lucide-react";
 import { Spinner } from "@/app/_components/shared/ui/spinner";
 import mapTaskToIcon from "../_utils/mapTaskToIcon";
 import colorTaskPriorityPill from "../_utils/colorTaskPriorityPill";
@@ -12,9 +12,12 @@ import {
   GET_USER_TASKS,
 } from "@/app/_graphql/typeDefs";
 import colorTaskIcon from "../_utils/colorTaskIcon";
+import { useState } from "react";
 
 const TaskComponent = ({ task }: { task: Task }) => {
   const TaskIcon = mapTaskToIcon(task.name);
+
+  const [isChevronDown, setIsChevronDown] = useState(false);
 
   const [completeTask, { loading }] = useMutation<Task>(COMPLETE_TASK, {
     refetchQueries: [{ query: GET_USER_TASKS }],
@@ -85,8 +88,13 @@ const TaskComponent = ({ task }: { task: Task }) => {
         >
           <CircleX />
         </div>
-        <div className="bg-white hover:bg-[#3a3a3a] text-[#3a3a3a] hover:text-white p-1.5 rounded-2xl transition-colors cursor-pointer">
-          <ChevronDown />
+        <div
+          className="bg-white hover:bg-[#3a3a3a] text-[#3a3a3a] hover:text-white p-1.5 rounded-2xl transition-colors cursor-pointer"
+          onClick={() => setIsChevronDown((prevState) => !prevState)}
+        >
+          <ChevronDown
+            className={`transition-transform duration-300 ease-in-out ${isChevronDown ? "rotate-0" : "rotate-180"}`}
+          />
         </div>
       </div>
     </div>
