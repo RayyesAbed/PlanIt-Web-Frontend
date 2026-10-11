@@ -9,7 +9,7 @@ import {
 import { Input } from "@/app/_components/shared/ui/input";
 import { Spinner } from "@/app/_components/shared/ui/spinner";
 import { Textarea } from "@/app/_components/shared/ui/textarea";
-import { ADD_TASK } from "@/app/_graphql/typeDefs";
+import { ADD_TASK, GET_USER_TASKS } from "@/app/_graphql/typeDefs";
 import { Task } from "@/app/_types/App";
 import { useMutation } from "@apollo/client/react";
 import { Dispatch, SetStateAction } from "react";
@@ -24,7 +24,9 @@ const TaskDialog = ({
 }) => {
   const taskLocale = useTranslation("Tasks");
 
-  const [addTask, { loading }] = useMutation<Task>(ADD_TASK);
+  const [addTask, { loading }] = useMutation<Task>(ADD_TASK, {
+    refetchQueries: [{ query: GET_USER_TASKS }],
+  });
 
   const handleAddTask = (event: React.MouseEvent) => {
     event.preventDefault();
