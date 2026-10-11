@@ -40,6 +40,7 @@ const TaskDialog = ({
       description: "",
       dueDate: new Date(),
       priority: "Someday",
+      points: 10,
       isCompleted: false,
       isDue: false,
     });
