@@ -14,18 +14,18 @@ const TaskComponent = ({ task }: { task: Task }) => {
 
   const [completeTask, { loading }] = useMutation<Task>(COMPLETE_TASK);
 
-  const handleCompleteTask = () => {
-    const sanitizedTask = {
-      _id: task._id,
-      name: task.name,
-      description: task.description,
-      dueDate: task.dueDate,
-      priority: task.priority,
-      points: task.points,
-      isCompleted: task.isCompleted,
-      isDue: task.isDue,
-    };
+  const sanitizedTask = {
+    _id: task._id,
+    name: task.name,
+    description: task.description,
+    dueDate: task.dueDate,
+    priority: task.priority,
+    points: task.points,
+    isCompleted: task.isCompleted,
+    isDue: task.isDue,
+  };
 
+  const handleCompleteTask = () => {
     completeTask({
       variables: {
         data: sanitizedTask,
