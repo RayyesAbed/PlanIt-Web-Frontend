@@ -16,7 +16,9 @@ import colorTaskIcon from "../_utils/colorTaskIcon";
 const TaskComponent = ({ task }: { task: Task }) => {
   const TaskIcon = mapTaskToIcon(task.name);
 
-  const [completeTask, { loading }] = useMutation<Task>(COMPLETE_TASK);
+  const [completeTask, { loading }] = useMutation<Task>(COMPLETE_TASK, {
+    refetchQueries: [{ query: GET_USER_TASKS }],
+  });
   const [deleteTask] = useMutation<Task>(DELETE_TASK, {
     refetchQueries: [{ query: GET_USER_TASKS }],
   });
