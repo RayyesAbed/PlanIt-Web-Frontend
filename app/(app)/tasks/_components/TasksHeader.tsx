@@ -29,7 +29,11 @@ const TasksHeader = () => {
   return (
     <section className="bg-white dark:bg-[#5b5b5b] absolute top-16 p-7 w-[95%] lg:w-[97.5%] ml-[2.5%] lg:ml-0 h-[85%] rounded-[45px] shadow-xl overflow-scroll">
       <Dialog isOpen={isDialogOpen} setIsOpen={setIsDialogOpen}>
-        <TaskDialog currentTask={currentTask} setCurrentTask={setCurrentTask} />
+        <TaskDialog
+          currentTask={currentTask}
+          setCurrentTask={setCurrentTask}
+          setIsOpen={setIsDialogOpen}
+        />
       </Dialog>
       <section className="flex items-center">
         <h1 className="hidden lg:block text-[#393838] dark:text-white text-[36px] font-bold">
