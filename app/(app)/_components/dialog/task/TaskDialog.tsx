@@ -52,6 +52,10 @@ const TaskDialog = ({
     setIsOpen(false);
   };
 
+  const handleCancelTask = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       <h1 className="text-[#393838] text-2xl font-bold">
@@ -129,7 +133,10 @@ const TaskDialog = ({
           >
             {loading ? <Spinner className="size-6" /> : taskLocale.t("add")}
           </Button>
-          <Button className="flex-1/2 bg-[#EAEAEA] hover:bg-[#dedcdc] text-[#3E3E3E] cursor-pointer active:scale-97 rounded-[45px] py-6 text-[16px]">
+          <Button
+            className="flex-1/2 bg-[#EAEAEA] hover:bg-[#dedcdc] text-[#3E3E3E] cursor-pointer active:scale-97 rounded-[45px] py-6 text-[16px]"
+            onClick={handleCancelTask}
+          >
             {taskLocale.t("cancel")}
           </Button>
         </section>
