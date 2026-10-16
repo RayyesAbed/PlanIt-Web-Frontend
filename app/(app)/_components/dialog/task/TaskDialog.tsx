@@ -48,6 +48,8 @@ const TaskDialog = ({
       isCompleted: false,
       isDue: false,
     });
+
+    setIsOpen(false);
   };
 
   return (
