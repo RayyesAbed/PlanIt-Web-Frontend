@@ -101,7 +101,7 @@ const TaskDialog = ({
           <FieldLabel>{taskLocale.t("priority")}</FieldLabel>
           <section className="flex gap-10 text-center items-center">
             <div
-              className="flex-1/3 bg-[#F2F2F2] rounded-[45px] py-2 px-6 font-semibold cursor-pointer"
+              className={`flex-1/3 rounded-[45px] py-2 px-6 font-semibold cursor-pointer ${currentTask.priority == "Someday" ? "bg-[#343434] text-white" : "bg-[#F2F2F2]"}`}
               onClick={() =>
                 setCurrentTask({ ...currentTask, priority: "Someday" })
               }
@@ -109,7 +109,7 @@ const TaskDialog = ({
               {taskLocale.t("someday")}
             </div>
             <div
-              className="flex-1/3 bg-[#F2F2F2] rounded-[45px] py-2 px-6 font-semibold cursor-pointer"
+              className={`flex-1/3 rounded-[45px] py-2 px-6 font-semibold cursor-pointer ${currentTask.priority == "Focus" ? "bg-[#343434] text-white" : "bg-[#F2F2F2]"}`}
               onClick={() =>
                 setCurrentTask({ ...currentTask, priority: "Focus" })
               }
@@ -117,7 +117,7 @@ const TaskDialog = ({
               {taskLocale.t("focus")}
             </div>
             <div
-              className="flex-1/3 bg-[#F2F2F2] rounded-[45px] py-2 px-6 font-semibold cursor-pointer"
+              className={`flex-1/3 rounded-[45px] py-2 px-6 font-semibold cursor-pointer ${currentTask.priority == "Asap!" ? "bg-[#343434] text-white" : "bg-[#F2F2F2]"}`}
               onClick={() =>
                 setCurrentTask({ ...currentTask, priority: "Asap!" })
               }
