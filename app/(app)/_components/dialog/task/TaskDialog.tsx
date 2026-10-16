@@ -18,9 +18,11 @@ import { useTranslation } from "react-i18next";
 const TaskDialog = ({
   currentTask,
   setCurrentTask,
+  setIsOpen,
 }: {
   currentTask: Task;
   setCurrentTask: Dispatch<SetStateAction<Task>>;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
   const taskLocale = useTranslation("Tasks");
 
