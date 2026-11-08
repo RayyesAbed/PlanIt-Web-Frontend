@@ -90,12 +90,14 @@ const TaskComponent = ({ task }: { task: Task }) => {
           </div>
         </div>
         <div className="flex flex-[10%] gap-5">
-          <div
-            className="bg-white hover:bg-[#8e8706] text-[#8e8706] hover:text-white p-1.5 rounded-2xl transition-colors cursor-pointer"
-            onClick={handleEditTask}
-          >
-            <Pencil />
-          </div>
+          {!task.isDue && !task.isCompleted && (
+            <div
+              className="bg-white hover:bg-[#8e8706] text-[#8e8706] hover:text-white p-1.5 rounded-2xl transition-colors cursor-pointer"
+              onClick={handleEditTask}
+            >
+              <Pencil />
+            </div>
+          )}
           {createPortal(
             <Dialog
               isOpen={isEditDialogVisible}
