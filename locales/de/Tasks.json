@@ -1,6 +1,7 @@
 {
   "addTask": "Aufgabe hinzufügen",
   "add": "Hinzufügen",
+  "edit": "Bearbeiten",
   "cancel": "Abbrechen",
   "taskName": "Aufgabenname",
   "taskNamePlaceholder": "Was muss erledigt werden",

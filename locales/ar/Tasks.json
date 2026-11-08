@@ -1,6 +1,7 @@
 {
   "addTask": "إضافة مهمة",
   "add": "إضافة",
+  "edit": "تعديل",
   "cancel": "إلغاء",
   "taskName": "اسم المهمة",
   "taskNamePlaceholder": "ما الذي يحتاج إلى إنجازه",
