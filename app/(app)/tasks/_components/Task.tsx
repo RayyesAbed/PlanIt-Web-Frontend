@@ -13,11 +13,15 @@ import {
 } from "@/app/_graphql/typeDefs";
 import colorTaskIcon from "../_utils/colorTaskIcon";
 import { useState } from "react";
+import { createPortal } from "react-dom";
+import EditTaskDialog from "../../_components/dialog/task/EditTaskDialog";
+import Dialog from "../../_components/dialog/shared/Dialog";
 
 const TaskComponent = ({ task }: { task: Task }) => {
   const TaskIcon = mapTaskToIcon(task.name);
 
   const [isChevronUp, setIsChevronUp] = useState(false);
+  const [isEditDialogVisible, setIsEditDialogVisible] = useState(false);
 
   const [completeTask, { loading }] = useMutation<Task>(COMPLETE_TASK, {
     refetchQueries: [{ query: GET_USER_TASKS }],
@@ -53,6 +57,10 @@ const TaskComponent = ({ task }: { task: Task }) => {
     });
   };
 
+  const handleEditTask = () => {
+    setIsEditDialogVisible(true);
+  };
+
   return (
     <div
       className={`bg-[#ececec] w-[100%] rounded-[45px] p-7 items-center gap-6 mt-5 task ${isChevronUp ? "pb-20" : ""}`}
@@ -82,9 +90,24 @@ const TaskComponent = ({ task }: { task: Task }) => {
           </div>
         </div>
         <div className="flex flex-[10%] gap-5">
-          <div className="bg-white hover:bg-[#8e8706] text-[#8e8706] hover:text-white p-1.5 rounded-2xl transition-colors cursor-pointer">
+          <div
+            className="bg-white hover:bg-[#8e8706] text-[#8e8706] hover:text-white p-1.5 rounded-2xl transition-colors cursor-pointer"
+            onClick={handleEditTask}
+          >
             <Pencil />
           </div>
+          {createPortal(
+            <Dialog
+              isOpen={isEditDialogVisible}
+              setIsOpen={setIsEditDialogVisible}
+            >
+              <EditTaskDialog
+                currentTask={task}
+                setIsOpen={setIsEditDialogVisible}
+              />
+            </Dialog>,
+            document.body,
+          )}
           <div
             className="bg-white hover:bg-[#7A0000] text-[#7A0000] hover:text-white p-1.5 rounded-2xl transition-colors cursor-pointer"
             onClick={handleDeleteTask}
