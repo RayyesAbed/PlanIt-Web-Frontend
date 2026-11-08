@@ -1,4 +1,5 @@
 export type Task = {
+  __typename?: string;
   _id?: string;
   name: string;
   description: string;
