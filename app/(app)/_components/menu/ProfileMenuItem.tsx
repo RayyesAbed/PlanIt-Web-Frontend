@@ -21,8 +21,10 @@ const ProfileMenuItem = () => {
       <section>
         <p>{data?.getUserData.name}</p>
         <p>
-          <span>{data?.getUserData.points} XP</span>
-          <span>{data?.getUserData.subscription.name}</span>
+          <span>{data?.getUserData.points}XP</span>
+          <span className="font-semibold ml-5">
+            {data?.getUserData.subscription.name}
+          </span>
         </p>
       </section>
     </li>
