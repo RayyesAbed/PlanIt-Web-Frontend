@@ -10,7 +10,7 @@ import {
 const MenuItems = [
   {
     locale: "tasks",
-    path: "/tasks",
+    path: "/tasks?dueDate=today",
     icon: <SquareCheck />,
   },
   {
