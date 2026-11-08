@@ -74,7 +74,7 @@ const TaskComponent = ({ task }: { task: Task }) => {
         </div>
         <div className="flex-[40%] font-semibold">{task.name}</div>
         <div className="flex flex-[1%] gap-5 text-center items-center">
-          <div className="bg-[#F3F4F6] rounded-[45px] px-5 py-1 font-semibold">
+          <div className="bg-[#F3F4F6] rounded-[45px] px-5 w-[120px] py-1 font-semibold">
             {formatTime(task.dueDate)}
           </div>
           <div
